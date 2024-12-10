@@ -17,7 +17,7 @@ const CityIcon = ({ city }) => {
         return Darlington;
       case "durham":
         return Durham;
-      case "middlessbrough":
+      case "middlesbrough":
         return Middlesbrough;
       case "newcastle":
         return Newcastle;
