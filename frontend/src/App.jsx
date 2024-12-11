@@ -1,11 +1,11 @@
 import "./App.css";
-import Dashboard from "@/pages/Dashboard/index.jsx";
+import AppRoutes from "@/AppRoutes.jsx";
 
 const App = () => {
   return (
-    <div>
-      <Dashboard />
-    </div>
+    <>
+      <AppRoutes />
+    </>
   );
 };
 

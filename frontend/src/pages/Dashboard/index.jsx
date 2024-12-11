@@ -3,7 +3,7 @@ import { Layout } from "antd";
 import SCSidebar from "@/pages/Dashboard/Sidebar/SCSidebar.jsx";
 import SCFooter from "@/pages/Dashboard/Footer/SCFooter.jsx";
 import SCHeader from "@/pages/Dashboard/Header/Header.jsx";
-import DashboardRoutes from '@/DashboardRoutes.jsx'
+import { Outlet } from "react-router-dom";
 
 const layoutStyle = {
   minHeight: "100vh",
@@ -15,7 +15,7 @@ const Dashboard = () => {
       <SCSidebar />
       <Layout>
         <SCHeader />
-        <DashboardRoutes />
+        <Outlet />
         <SCFooter />
       </Layout>
     </Layout>
