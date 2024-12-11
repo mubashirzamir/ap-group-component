@@ -12,15 +12,11 @@ const headerStyle = {
 };
 
 const SCHeader = () => {
-  const {
-    token: { colorBgContainer },
-  } = theme.useToken();
-
   return (
     <Header
       style={{
         ...headerStyle,
-        background: colorBgContainer,
+        background: "transparent",
       }}
     >
       <div className="flex justify-end p-4">
