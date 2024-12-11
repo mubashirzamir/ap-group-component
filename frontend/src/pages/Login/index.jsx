@@ -7,7 +7,7 @@ import request from "@/request.js";
 import { genericNetworkError } from "@/helpers/utils.jsx";
 
 const formItemLayout = {
-  style: { maxWidth: 600 },
+  style: { minWidth: 300 },
   requiredMark: false,
   colon: false,
 };
