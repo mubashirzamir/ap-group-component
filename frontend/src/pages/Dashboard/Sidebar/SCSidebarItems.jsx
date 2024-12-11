@@ -1,5 +1,9 @@
 import React from "react";
-import { AreaChartOutlined, UnorderedListOutlined } from "@ant-design/icons";
+import {
+  AreaChartOutlined,
+  HomeOutlined,
+  UnorderedListOutlined,
+} from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import CityIcon from "@/components/CityIcon/index.jsx";
 
@@ -19,7 +23,16 @@ const makeItem = (key, label, icon, children) => ({
 });
 
 export const makeItems = () => {
-  const items = [];
+  const items = [
+    makeItem(
+      "/",
+      <Link key="/" to="/">
+        Home
+      </Link>,
+      <HomeOutlined />,
+    ),
+  ];
+
   cities.forEach((city) => {
     items.push(
       makeItem(
@@ -54,3 +67,8 @@ export const makeItems = () => {
 
   return items;
 };
+
+export const getDefaultOpenKeys = (pathname) => {
+  const city = pathname.split("/")[1];
+  return city ? [city] : [];
+}

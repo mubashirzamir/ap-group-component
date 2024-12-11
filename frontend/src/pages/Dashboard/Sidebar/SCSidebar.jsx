@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Layout, Menu } from "antd";
-import { makeItems } from "./SCSidebarItems.jsx";
+import { getDefaultOpenKeys, makeItems } from "./SCSidebarItems.jsx";
 import { useLocation } from "react-router-dom";
 
 const { Sider } = Layout;
@@ -19,6 +19,7 @@ const SCSidebar = () => {
         theme="dark"
         mode="inline"
         defaultSelectedKeys={[location.pathname]}
+        defaultOpenKeys={getDefaultOpenKeys(location.pathname)}
         items={makeItems()}
       />
     </Sider>
