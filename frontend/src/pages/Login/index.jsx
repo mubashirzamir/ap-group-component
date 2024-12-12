@@ -43,10 +43,12 @@ const LoginForm = () => {
       <Form {...formItemLayout} onFinish={onFinish} autoComplete="off">
         <Form.Item
           name="email"
+          validateTrigger={["onBlur"]}
           rules={[
             {
               required: true,
-              message: "Please input your email.",
+              type: "email",
+              message: "A valid email is required.",
             },
           ]}
         >
@@ -58,10 +60,17 @@ const LoginForm = () => {
 
         <Form.Item
           name="password"
+          validateTrigger={["onBlur"]}
           rules={[
             {
               required: true,
-              message: "Please input your password.",
+              validator: (_, value, callback) => {
+                if (!value || value.length < 8) {
+                  callback("Password must be at least 8 characters.");
+                } else {
+                  callback();
+                }
+              },
             },
           ]}
         >

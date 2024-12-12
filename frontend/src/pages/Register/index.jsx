@@ -3,7 +3,7 @@ import { Button, Card, Form, Input } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import InputIcon from "@/components/InputIcon/index.jsx";
 import { Link } from "react-router-dom";
-import request from "@/request.js";
+import AuthService from "@/services/AuthService.jsx";
 import { genericNetworkError } from "@/helpers/utils.jsx";
 
 const formItemLayout = {
@@ -25,17 +25,12 @@ const RegisterForm = () => {
 
   const onFinish = (values) => {
     setLoading(true);
-    setTimeout(() => {
-      request
-        .post("/login", values)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch(genericNetworkError)
-        .finally(() => {
-          setLoading(false);
-        });
-    }, 3000);
+    AuthService.register(values)
+      .then((response) => {
+        console.log(response);
+      })
+      .catch(genericNetworkError)
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -46,7 +41,8 @@ const RegisterForm = () => {
           rules={[
             {
               required: true,
-              message: "Please input your email.",
+              type: "email",
+              message: "A valid email is required.",
             },
           ]}
         >
@@ -58,16 +54,46 @@ const RegisterForm = () => {
 
         <Form.Item
           name="password"
+          hasFeedback
           rules={[
             {
               required: true,
-              message: "Please input your password.",
+              message: "Password is required.",
+            },
+            {
+              min: 8,
+              message: "Password must be at least 8 characters.",
             },
           ]}
         >
           <Input.Password
             prefix={<InputIcon Icon={LockOutlined} />}
             placeholder="Password"
+          />
+        </Form.Item>
+
+        <Form.Item
+          name="confirm"
+          hasFeedback
+          dependencies={["password"]}
+          rules={[
+            {
+              required: true,
+              message: "Please confirm your password.",
+            },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue("password") === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error("Passwords do not match."));
+              },
+            }),
+          ]}
+        >
+          <Input.Password
+            prefix={<InputIcon Icon={LockOutlined} />}
+            placeholder="Confirm Password"
           />
         </Form.Item>
 
