@@ -57,8 +57,17 @@ const View = () => {
   };
 
   useEffect(() => {
+    // Initial fetch on mount
     fetchData();
-  }, []);
+
+    // Set interval to fetch data periodically (every 5 seconds)
+    const intervalId = setInterval(() => {
+      fetchData();
+    }, 30000); // 30000ms = 30 seconds
+
+    // Cleanup: Clear interval on unmount to prevent memory leaks
+    return () => clearInterval(intervalId);
+  }, []); // Empty dependency array means this effect runs only once on mount
 
   return (
     <DashboardPage breadcrumbs={[{ title: "Newcastle" }, { title: "View" }]}>
