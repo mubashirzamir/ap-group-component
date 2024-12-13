@@ -1,23 +1,27 @@
 import React from "react";
-import { Avatar, Dropdown } from "antd";
+import { Dropdown } from "antd";
 import {
   DownCircleFilled,
-  LogoutOutlined,
-  UserOutlined,
-} from "@ant-design/icons";
-import AvatarIcon from '@/components/AvatarIcon.jsx'
+  LogoutOutlined, MailOutlined,
+  UserOutlined
+} from '@ant-design/icons'
+import AvatarIcon from "@/components/AvatarIcon.jsx";
+import { useAuth } from "@/helpers/Auth/AuthProvider.jsx";
 
 const ProfileDropdown = () => {
+  const { user, logoutAction } = useAuth();
+
   const items = [
     {
-      key: "name",
-      label: "Mubashir Zamir",
-      icon: <UserOutlined />,
+      key: "email",
+      label: user.email,
+      icon: <MailOutlined />,
     },
     {
       key: "logout",
       label: "Logout",
       icon: <LogoutOutlined />,
+      onClick: logoutAction,
     },
   ];
 
@@ -25,7 +29,7 @@ const ProfileDropdown = () => {
     <div>
       <Dropdown menu={{ items }} trigger={["click"]}>
         <a onClick={(e) => e.preventDefault()}>
-          <AvatarIcon user={{name: "Mubashir"}} />
+          <AvatarIcon />
           <DownCircleFilled
             style={{ color: "#f3f3f3" }}
             className="transform -translate-x-3 translate-y-3"

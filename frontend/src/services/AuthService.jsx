@@ -7,11 +7,11 @@ const register = ({ email, password, confirm }) => {
 };
 
 const login = ({ email, password }) => {
-  return request.post(`${baseUrl}/login`, { email, password }, { withCredentials: true });
+  return request.post(`${baseUrl}/login`, { email, password });
 };
 
 const test = () => {
-  return request.get(`${baseUrl}/test`, { withCredentials: true });
+  return request.get(`${baseUrl}/test`);
 };
 
 export default { register, login, test };

@@ -5,7 +5,7 @@ import { useAuth } from "@/helpers/Auth/AuthProvider.jsx";
 const ProtectedRoutes = () => {
   const { user } = useAuth();
 
-  if (false) {
+  if (!user) {
     return <Navigate to="/login" />;
   }
 

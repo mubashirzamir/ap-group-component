@@ -20,6 +20,8 @@ export const validationError = (error, form) => {
 };
 
 export const genericNetworkError = (error) => {
+  console.error(error);
+
   return notification.error({
     ...notificationProps,
     message: getErrorMessage(error),
@@ -53,6 +55,6 @@ const getErrorMessage = (error) => {
     case 500:
       return "500: Internal Server Error";
     default:
-      return "Network Error";
+      return "Something went wrong";
   }
 };

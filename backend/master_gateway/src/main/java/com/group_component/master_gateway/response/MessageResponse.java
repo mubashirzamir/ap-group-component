@@ -1,4 +1,4 @@
-package com.group_component.master_gateway.dto.response;
+package com.group_component.master_gateway.response;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

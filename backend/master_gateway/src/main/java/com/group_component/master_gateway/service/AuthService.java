@@ -1,6 +1,7 @@
 package com.group_component.master_gateway.service;
 
-import com.group_component.master_gateway.dto.UserDTO;
+import com.group_component.master_gateway.request.LoginRequest;
+import com.group_component.master_gateway.request.RegisterRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -8,25 +9,18 @@ import org.springframework.stereotype.Service;
 public class AuthService {
     private final RegistrationService registrationService;
     private final LoginService loginService;
-    private final LogoutService logoutService;
 
     public AuthService(RegistrationService registrationService,
-                       LoginService loginService,
-                       LogoutService logoutService) {
+                       LoginService loginService) {
         this.registrationService = registrationService;
         this.loginService = loginService;
-        this.logoutService = logoutService;
     }
 
-    public ResponseEntity<?> register(UserDTO userDTO) {
-        return this.registrationService.register(userDTO);
+    public ResponseEntity<?> register(RegisterRequest registerRequest) {
+        return this.registrationService.register(registerRequest);
     }
 
-    public ResponseEntity<?> login(UserDTO userDTO) {
-        return this.loginService.login(userDTO);
-    }
-
-    public ResponseEntity<?> logout() {
-        return this.logoutService.logout();
+    public ResponseEntity<?> login(LoginRequest loginRequest) {
+        return this.loginService.login(loginRequest);
     }
 }

@@ -1,7 +1,8 @@
 package com.group_component.master_gateway.controller;
 
-import com.group_component.master_gateway.dto.UserDTO;
-import com.group_component.master_gateway.dto.response.MessageResponse;
+import com.group_component.master_gateway.request.LoginRequest;
+import com.group_component.master_gateway.request.RegisterRequest;
+import com.group_component.master_gateway.response.MessageResponse;
 import com.group_component.master_gateway.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,18 +21,13 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody UserDTO userDTO) {
-        return this.authService.register(userDTO);
+    public ResponseEntity<?> register(@RequestBody RegisterRequest registerRequest) {
+        return this.authService.register(registerRequest);
     }
 
     @PostMapping("/login")
-    public ResponseEntity<?> login(@RequestBody UserDTO userDTO) {
-        return this.authService.login(userDTO);
-    }
-
-    @GetMapping("/logout")
-    public ResponseEntity<?> logout() {
-        return this.authService.logout();
+    public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
+        return this.authService.login(loginRequest);
     }
 
     @GetMapping("/test")
