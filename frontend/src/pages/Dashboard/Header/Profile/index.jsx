@@ -2,11 +2,15 @@ import React from "react";
 import { Dropdown } from "antd";
 import {
   DownCircleFilled,
-  LogoutOutlined, MailOutlined,
-  UserOutlined
-} from '@ant-design/icons'
+  LogoutOutlined,
+  MailOutlined,
+} from "@ant-design/icons";
 import AvatarIcon from "@/components/AvatarIcon.jsx";
 import { useAuth } from "@/helpers/Auth/AuthProvider.jsx";
+
+const downCircleStyle = {
+  color: "#f3f3f3",
+};
 
 const ProfileDropdown = () => {
   const { user, logoutAction } = useAuth();
@@ -31,7 +35,7 @@ const ProfileDropdown = () => {
         <a onClick={(e) => e.preventDefault()}>
           <AvatarIcon />
           <DownCircleFilled
-            style={{ color: "#f3f3f3" }}
+            style={downCircleStyle}
             className="transform -translate-x-3 translate-y-3"
           />
         </a>

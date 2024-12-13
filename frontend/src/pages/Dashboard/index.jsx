@@ -4,6 +4,9 @@ import SCSidebar from "@/pages/Dashboard/Sidebar/SCSidebar.jsx";
 import SCFooter from "@/pages/Dashboard/Footer/SCFooter.jsx";
 import SCHeader from "@/pages/Dashboard/Header/Header.jsx";
 import { Outlet } from "react-router-dom";
+import { Chart, registerables } from "chart.js";
+
+Chart.register(...registerables);
 
 const layoutStyle = {
   minHeight: "100vh",

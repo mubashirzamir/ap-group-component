@@ -70,3 +70,27 @@ export const filtersToQueryParams = (filters) => {
     console.error(error);
   }
 };
+
+export const renderDateTime = (value) => {
+  try {
+    return new Date(value).toLocaleString();
+  } catch (error) {
+    return "Invalid date";
+  }
+};
+
+export const generateColor = (initial) => {
+  let letter = initial.toUpperCase();
+
+  if (!/[A-Z]/.test(letter)) {
+    return "#000000";
+  }
+
+  const charCode = letter.charCodeAt(0) - 65;
+  const hue = (charCode * (360 / 26)) % 360;
+  return `hsl(${hue}, 50%, 50%)`;
+};
+
+export const randomColor = () => {
+  return `hsl(${Math.random() * 360}, ${Math.random() * 100}%, ${Math.random() * 50 + 25}%)`;
+};
