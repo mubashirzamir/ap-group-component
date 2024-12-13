@@ -4,12 +4,14 @@ import AuthService from "@/services/AuthService.jsx";
 
 const AuthContext = createContext({
   user: null,
+  loading: true,
   loginAction: () => {},
   logoutAction: () => {},
 });
 
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -17,6 +19,7 @@ const AuthProvider = ({ children }) => {
     if (savedUser) {
       setUser(JSON.parse(savedUser));
     }
+    setLoading(false);
   }, []);
 
   const loginAction = (values) => {
@@ -36,7 +39,7 @@ const AuthProvider = ({ children }) => {
   };
 
   return (
-    <AuthContext.Provider value={{ user, loginAction, logoutAction }}>
+    <AuthContext.Provider value={{ user, loading, loginAction, logoutAction }}>
       {children}
     </AuthContext.Provider>
   );
