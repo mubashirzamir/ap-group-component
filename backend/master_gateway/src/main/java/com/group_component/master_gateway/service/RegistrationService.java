@@ -15,27 +15,26 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class UserDetailsService {
-    public UserDetailsService() {
+public class RegistrationService {
+    private final PasswordEncoder passwordEncoder;
+    private final UserDetailsManager userDetailsManager;
+
+    public RegistrationService(PasswordEncoder passwordEncoder, UserDetailsManager userDetailsManager) {
+        this.passwordEncoder = passwordEncoder;
+        this.userDetailsManager = userDetailsManager;
     }
 
-    public ResponseEntity<?> register(UserDTO userDTO,
-                                      UserDetailsManager userDetailsManager,
-                                      PasswordEncoder passwordEncoder) {
-        if (userDetailsManager.userExists(userDTO.email())) {
-            return MessageResponse.create("User already exists.", HttpStatus.CONFLICT);
-        }
-
+    public ResponseEntity<?> register(UserDTO userDTO) {
         Map<String, ArrayList<String>> errors = validateUser(userDTO);
         if (!errors.isEmpty()) {
             return ValidationErrorResponse.create(errors, HttpStatus.UNPROCESSABLE_ENTITY);
         }
 
-        User.UserBuilder userBuilder = User.withUsername(userDTO.email())
-                .password(passwordEncoder.encode(userDTO.getPassword()))
+        User.UserBuilder userBuilder = User.withUsername(userDTO.getEmail())
+                .password(this.passwordEncoder.encode(userDTO.getPassword()))
                 .roles("USER");
 
-        userDetailsManager.createUser(userBuilder.build());
+        this.userDetailsManager.createUser(userBuilder.build());
 
         return MessageResponse.create("Registered.", HttpStatus.CREATED);
     }
@@ -43,7 +42,13 @@ public class UserDetailsService {
     public Map<String, ArrayList<String>> validateUser(UserDTO userDTO) {
         Map<String, ArrayList<String>> errors = new HashMap<>();
 
-        if (!userDTO.email().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
+        if (this.userDetailsManager.userExists(userDTO.getEmail())) {
+            errors.put("email", new ArrayList<>() {{
+                add("Email is already registered.");
+            }});
+        }
+
+        if (!userDTO.getEmail().matches("^[A-Za-z0-9+_.-]+@(.+)$")) {
             errors.put("email", new ArrayList<>() {{
                 add("Invalid email.");
             }});
@@ -52,6 +57,12 @@ public class UserDetailsService {
         if (userDTO.getPassword().length() < 8) {
             errors.put("password", new ArrayList<>() {{
                 add("Password must be at least 8 characters long.");
+            }});
+        }
+
+        if (!userDTO.getPassword().equals(userDTO.getConfirm())) {
+            errors.put("confirm", new ArrayList<>() {{
+                add("Passwords do not match.");
             }});
         }
 

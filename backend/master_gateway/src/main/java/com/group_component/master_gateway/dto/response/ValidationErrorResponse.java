@@ -17,7 +17,12 @@ public class ValidationErrorResponse {
         return errors;
     }
 
-    public static ResponseEntity<ValidationErrorResponse> create(Map<String, ArrayList<String>> errors, HttpStatus status) {
+    public static ResponseEntity<ValidationErrorResponse> create(Map<String, ArrayList<String>> errors,
+                                                                 HttpStatus status) {
         return new ResponseEntity<>(new ValidationErrorResponse(errors), status);
+    }
+
+    public static ResponseEntity<ValidationErrorResponse> create(Map<String, ArrayList<String>> errors) {
+        return create(errors, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 }

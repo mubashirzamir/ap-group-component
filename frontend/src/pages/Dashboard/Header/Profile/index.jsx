@@ -5,6 +5,7 @@ import {
   LogoutOutlined,
   UserOutlined,
 } from "@ant-design/icons";
+import AvatarIcon from '@/components/AvatarIcon.jsx'
 
 const ProfileDropdown = () => {
   const items = [
@@ -24,7 +25,7 @@ const ProfileDropdown = () => {
     <div>
       <Dropdown menu={{ items }} trigger={["click"]}>
         <a onClick={(e) => e.preventDefault()}>
-          <Avatar size="large" icon={<UserOutlined />} />
+          <AvatarIcon user={{name: "Mubashir"}} />
           <DownCircleFilled
             style={{ color: "#f3f3f3" }}
             className="transform -translate-x-3 translate-y-3"

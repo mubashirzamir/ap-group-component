@@ -3,8 +3,8 @@ import { Button, Card, Form, Input } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import InputIcon from "@/components/InputIcon/index.jsx";
 import { Link } from "react-router-dom";
-import request from "@/request.js";
-import { genericNetworkError } from "@/helpers/utils.jsx";
+import { genericNetworkError, validationError } from "@/helpers/utils.jsx";
+import { useAuth } from "@/helpers/Auth/AuthProvider.jsx";
 
 const formItemLayout = {
   style: { minWidth: 300 },
@@ -21,29 +21,23 @@ const Login = () => (
 );
 
 const LoginForm = () => {
+  const { loginAction } = useAuth();
   const [loading, setLoading] = useState(false);
+  const [form] = Form.useForm();
 
   const onFinish = (values) => {
     setLoading(true);
-    setTimeout(() => {
-      request
-        .post("/login", values)
-        .then((response) => {
-          console.log(response);
-        })
-        .catch(genericNetworkError)
-        .finally(() => {
-          setLoading(false);
-        });
-    }, 3000);
+    loginAction(values)
+      .catch((error) => validationError(error, form))
+      .catch(genericNetworkError)
+      .finally(() => setLoading(false));
   };
 
   return (
     <>
-      <Form {...formItemLayout} onFinish={onFinish} autoComplete="off">
+      <Form {...formItemLayout} form={form} onFinish={onFinish}>
         <Form.Item
           name="email"
-          validateTrigger={["onBlur"]}
           rules={[
             {
               required: true,
@@ -60,17 +54,10 @@ const LoginForm = () => {
 
         <Form.Item
           name="password"
-          validateTrigger={["onBlur"]}
           rules={[
             {
               required: true,
-              validator: (_, value, callback) => {
-                if (!value || value.length < 8) {
-                  callback("Password must be at least 8 characters.");
-                } else {
-                  callback();
-                }
-              },
+              message: "Password is required.",
             },
           ]}
         >

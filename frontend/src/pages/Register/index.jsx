@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { Button, Card, Form, Input } from "antd";
+import { Button, Card, Form, Input, message } from "antd";
 import { LockOutlined, MailOutlined } from "@ant-design/icons";
 import InputIcon from "@/components/InputIcon/index.jsx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthService from "@/services/AuthService.jsx";
-import { genericNetworkError } from "@/helpers/utils.jsx";
+import { genericNetworkError, validationError } from "@/helpers/utils.jsx";
 
 const formItemLayout = {
   style: { minWidth: 300 },
@@ -21,21 +21,25 @@ const Register = () => (
 );
 
 const RegisterForm = () => {
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [form] = Form.useForm();
 
   const onFinish = (values) => {
     setLoading(true);
     AuthService.register(values)
-      .then((response) => {
-        console.log(response);
-      })
+      .then((response) =>
+        message.success(response.message + " Redirecting to login.", 0.1),
+      )
+      .then(() => navigate("/login"))
+      .catch((error) => validationError(error, form))
       .catch(genericNetworkError)
       .finally(() => setLoading(false));
   };
 
   return (
     <>
-      <Form {...formItemLayout} onFinish={onFinish} autoComplete="off">
+      <Form {...formItemLayout} form={form} onFinish={onFinish}>
         <Form.Item
           name="email"
           rules={[
