@@ -1,16 +1,16 @@
 package com.group_component.master_gateway.service;
 
-import com.group_component.master_gateway.response.dto.SanitizedUser;
 import com.group_component.master_gateway.request.LoginRequest;
 import com.group_component.master_gateway.response.LoginResponse;
-import com.group_component.master_gateway.response.MessageResponse;
 import com.group_component.master_gateway.response.ValidationErrorResponse;
+import com.group_component.master_gateway.response.dto.SanitizedUser;
 import com.group_component.master_gateway.security.JwtUtil;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.util.ObjectUtils;
 
@@ -45,20 +45,25 @@ public class LoginService {
             return LoginResponse.create(this.jwtUtil.generateToken(loginRequest.getEmail()),
                     SanitizedUser.instance(this.userDetailsService.loadUserByUsername(loginRequest.getEmail())));
         } catch (Exception e) {
-            System.out.println(e.getMessage());
-            MessageResponse.create("Invalid credentials.", HttpStatus.UNAUTHORIZED);
+            return ValidationErrorResponse.create(new HashMap<>() {{
+                put("password", new ArrayList<>() {{
+                    add("Invalid password.");
+                }});
+            }}, HttpStatus.UNAUTHORIZED);
         }
-
-        return ResponseEntity.ok(loginRequest);
     }
 
     public Map<String, ArrayList<String>> validateAttempt(LoginRequest loginRequest) {
         Map<String, ArrayList<String>> errors = new HashMap<>();
 
-        if (this.userDetailsService.loadUserByUsername(loginRequest.getEmail()) == null) {
+        try {
+            this.userDetailsService.loadUserByUsername(loginRequest.getEmail());
+        } catch (UsernameNotFoundException e) {
             errors.put("email", new ArrayList<>() {{
                 add("Email is not registered.");
             }});
+
+            return errors;
         }
 
         if (ObjectUtils.isEmpty(loginRequest.getEmail())) {

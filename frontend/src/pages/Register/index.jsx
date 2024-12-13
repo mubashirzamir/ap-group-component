@@ -29,7 +29,7 @@ const RegisterForm = () => {
     setLoading(true);
     AuthService.register(values)
       .then((response) =>
-        message.success(response.message + " Redirecting to login.", 0.1),
+        message.success(response.message + " Redirecting to login.", 0.5),
       )
       .then(() => navigate("/login"))
       .catch((error) => validationError(error, form))

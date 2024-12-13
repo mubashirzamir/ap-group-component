@@ -23,6 +23,6 @@ public class ValidationErrorResponse {
     }
 
     public static ResponseEntity<ValidationErrorResponse> create(Map<String, ArrayList<String>> errors) {
-        return create(errors, HttpStatus.UNPROCESSABLE_ENTITY);
+        return ValidationErrorResponse.create(errors, HttpStatus.UNPROCESSABLE_ENTITY);
     }
 }

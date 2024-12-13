@@ -6,8 +6,8 @@ const notificationProps = {
 };
 
 export const validationError = (error, form) => {
-  if (error?.response?.status === 422) {
-    const errors = error.response.data.errors;
+  const errors = error?.response?.data?.errors;
+  if (errors) {
     form.setFields(
       Object.entries(errors).map(([key, value]) => ({
         name: key,
@@ -60,5 +60,13 @@ const getErrorMessage = (error) => {
 };
 
 export const filtersToQueryParams = (filters) => {
-  return new URLSearchParams(filters).toString();
+  try {
+    if (Object.keys(filters).length === 0) {
+      return "";
+    }
+
+    return "?" + new URLSearchParams(filters).toString();
+  } catch (error) {
+    console.error(error);
+  }
 };
