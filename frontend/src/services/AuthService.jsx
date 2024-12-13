@@ -1,6 +1,6 @@
 import request from "@/request.js";
 
-const baseUrl = "/auth";
+const baseUrl = import.meta.env.VITE_AUTH_API_BASE_URL + "/auth";
 
 const register = ({ email, password, confirm }) => {
   return request.post(`${baseUrl}/register`, { email, password, confirm });

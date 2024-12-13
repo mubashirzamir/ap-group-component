@@ -58,3 +58,7 @@ const getErrorMessage = (error) => {
       return "Something went wrong";
   }
 };
+
+export const filtersToQueryParams = (filters) => {
+  return new URLSearchParams(filters).toString();
+};

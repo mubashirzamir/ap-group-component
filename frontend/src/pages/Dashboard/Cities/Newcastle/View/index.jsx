@@ -1,7 +1,7 @@
 import DashboardPage from "@/components/DashboardPage/index.jsx";
 import { Table } from "antd";
 import { useEffect, useState } from "react";
-import request from "@/request.js";
+import NewcastleService from "@/services/NewcastleService.jsx";
 import { genericNetworkError } from "@/helpers/utils.jsx";
 
 const columns = [
@@ -24,29 +24,28 @@ const columns = [
 
 const View = () => {
   const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
+  const [data, setData] = useState([]);
 
-  const fetchPosts = () => {
+  const fetchData = () => {
     setLoading(true);
-    request
-      .get("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => setPosts(response.data))
+    NewcastleService.cityConsumptions()
+      .then((response) => setData(response.data))
       .catch(genericNetworkError)
       .finally(() => setLoading(false));
   };
 
   useEffect(() => {
-    fetchPosts();
+    fetchData();
   }, []);
 
   return (
     <DashboardPage breadcrumbs={[{ title: "Newcastle" }, { title: "View" }]}>
       <Table
-        dataSource={posts}
+        dataSource={data}
         columns={columns}
         rowKey="id"
         loading={loading}
-        pagination={{ pageSize: 10 }}
+        pagination={{ pageSize: 50 }}
       />
     </DashboardPage>
   );
