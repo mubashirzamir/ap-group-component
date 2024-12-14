@@ -4,17 +4,21 @@ import React, { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
 import NewcastleService from "@/services/NewcastleService.jsx";
 import { genericNetworkError, randomColor } from "@/helpers/utils.jsx";
-import { Skeleton } from "antd";
+import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 
 const Visualization = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [errored, setErrored] = useState(false);
 
   const fetchData = () => {
     setLoading(true);
     NewcastleService.cityConsumptions()
       .then((response) => setData(response))
-      .catch(genericNetworkError)
+      .catch((e) => {
+        setErrored(true);
+        genericNetworkError(e);
+      })
       .finally(() => setLoading(false));
   };
 
@@ -35,9 +39,9 @@ const Visualization = () => {
     <DashboardPage
       breadcrumbs={[{ title: "Newcastle" }, { title: "Visualization" }]}
     >
-      <Skeleton loading={loading}>
+      <DataWrapper data={data} loading={loading} errored={errored}>
         <MonthlyConsumptionChart data={data} />
-      </Skeleton>
+      </DataWrapper>
     </DashboardPage>
   );
 };
