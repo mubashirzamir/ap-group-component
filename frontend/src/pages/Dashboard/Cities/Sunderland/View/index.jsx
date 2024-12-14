@@ -1,7 +1,7 @@
 // src/components/View.jsx
 
 import DashboardPage from "@/components/DashboardPage/index.jsx";
-import { Table, Select } from "antd"; // Import Select
+import { Table, Select, Spin } from "antd"; // Import Spin for loading
 import { useEffect, useState } from "react";
 import SunderlandService from "@/services/SunderlandService.jsx"; // Updated service
 import { genericNetworkError, renderDateTime } from "@/helpers/utils.jsx";
@@ -73,8 +73,8 @@ const View = () => {
 
   const fetchData = async () => {
     // Fetch Providers Data
-    setProviderLoading(true);
     setProviderErrored(null);
+    setProviderLoading(providerData.length === 0); // Only show loading if no data
 
     try {
       const providersResponse = await SunderlandService.getAggregatedDataByProvider(selectedTimeRange);
@@ -87,8 +87,8 @@ const View = () => {
     }
 
     // Fetch City Data
-    setCityLoading(true);
     setCityErrored(null);
+    setCityLoading(cityData === null); // Only show loading if no data
 
     try {
       const cityResponse = await SunderlandService.getAggregatedDataForCity(selectedTimeRange);
@@ -138,7 +138,7 @@ const View = () => {
           dataSource={providerData}
           columns={providerColumns}
           rowKey="providerId"
-          loading={providerLoading}
+          loading={providerLoading && providerData.length === 0} // Show loading only if no data
           title={() => "Providers Consumption Data"}
         />
       </DataWrapper>
@@ -150,7 +150,7 @@ const View = () => {
           dataSource={cityData ? [cityData] : []} // Wrap cityData in an array
           columns={cityColumns}
           rowKey="cityStatus" // Use a unique key
-          loading={cityLoading}
+          loading={cityLoading && !cityData} // Show loading only if no data
           pagination={false} // Typically, city status might not need pagination
           title={() => "Overall City Consumption Status"}
         />
