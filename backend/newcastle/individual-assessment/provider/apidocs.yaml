@@ -1,0 +1,104 @@
+openapi: 3.1.0
+info:
+  title: Provider Microservice API Documentation
+  version: 1.0.0
+servers:
+  - url: http://localhost:9081
+    description: Provider 01
+  - url: http://localhost:9082
+    description: Provider 02
+  - url: http://localhost:9083
+    description: Provider 03
+paths:
+  /consumptions:
+    post:
+      summary: Create a new consumption
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                entityId:
+                  type: number
+                  example: 1
+                entityType:
+                  type: string
+                  example: citizen
+                consumption:
+                  type: integer
+                  example: 100
+                generatedAt:
+                  type: string
+                  format: date-time
+                  example: 2024-11-24T00:00:00
+      responses:
+        '201':
+          description: Created
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: number
+                    example: 1
+                  entityId:
+                    type: number
+                    example: 1
+                  entityType:
+                    type: string
+                    example: citizen
+                  consumption:
+                    type: integer
+                    example: 100
+                  generatedAt:
+                    type: string
+                    format: date-time
+                    example: 2024-11-24T00:00:00
+      tags:
+        - Consumptions
+    get:
+      summary: Get consumptions
+      parameters:
+        - name: consumptionPeriodStart
+          in: query
+          schema:
+            type: string
+            format: date-time
+            example: 2024-11-24T00:00:00
+        - name: consumptionPeriodEnd
+          in: query
+          schema:
+            type: string
+            format: date-time
+            example: 2024-11-24T23:59:59
+      responses:
+        '200':
+          description: A list of consumptions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: number
+                      example: 1
+                    entityId:
+                      type: number
+                      example: 1
+                    entityType:
+                      type: string
+                      example: citizen
+                    consumption:
+                      type: integer
+                      example: 100
+                    generatedAt:
+                      type: string
+                      format: date-time
+                      example: 2024-11-24T00:00:00
+      tags:
+        - Consumptions

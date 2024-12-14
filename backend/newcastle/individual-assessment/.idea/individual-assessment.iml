@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/citizen/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/citizen/target" />
+      <excludeFolder url="file://$MODULE_DIR$/city/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/city/target" />
+      <excludeFolder url="file://$MODULE_DIR$/data" />
+      <excludeFolder url="file://$MODULE_DIR$/gateway/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/gateway/target" />
+      <excludeFolder url="file://$MODULE_DIR$/provider/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/provider/src/main/java/com/smart_cities/provider/.idea" />
+      <excludeFolder url="file://$MODULE_DIR$/provider/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>
