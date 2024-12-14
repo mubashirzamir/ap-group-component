@@ -116,22 +116,64 @@ To run the backend microservices for Newcastle, follow the instructions below:
 1. Navigate to the Newcastle directory:
 
    ```bash
-   cd /backend/newcastle/individual-assessment/individual-assessment
+   cd /backend/newcastle/individual-assessment/individual-assessment/main
    ```
 2. Build the docker containers:
 
    ```bash
-   docker-compose --build
+   docker-compose build
    ```
 
 3. Run the docker containers:
 
    ```bash
-    docker-compose up
+    docker-compose up -d
     ```
 
 If these microservices are running, you'll be able to see the data in the Newcastle dashboard.
    
+---
+
+## Git Workflow Instructions
+
+1. **Branching Out from Main**
+   - Always create a new branch from the `main` branch before making any changes.
+   - Name the branch after yourself for easier identification. For example:
+     ```bash
+     git checkout main
+     git pull origin main
+     git checkout -b your-name
+     ```
+
+2. **Making Changes**
+   - Work on your own branch and commit your changes regularly.
+     ```bash
+     git add .
+     git commit -m "Your descriptive commit message"
+     ```
+
+3. **Keeping Your Branch Updated with Main**
+   - Regularly pull changes from the `main` branch into your branch to keep it updated and avoid merge conflicts:
+     ```bash
+     git checkout main
+     git pull origin main
+     git checkout your-name
+     git merge main
+     ```
+
+4. **Creating a Pull Request**
+   - Once your changes are ready, push your branch to the remote repository:
+     ```bash
+     git push origin your-name
+     ```
+   - Open a Pull Request (PR) on the repository, targeting the `main` branch.
+   - Ensure your branch is up-to-date with `main` before creating the PR.
+
+5. **Avoid Pushing Directly to Main**
+   - **Do not push your changes directly to the `main` branch**. Always create a Pull Request and wait for it to be reviewed and approved.
+
+By following these steps, we can maintain a clean workflow and minimize merge conflicts.
+
 ---
 
 # Happy Coding 🧑‍💻
