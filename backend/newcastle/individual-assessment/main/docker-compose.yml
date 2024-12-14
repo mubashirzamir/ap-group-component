@@ -1,0 +1,177 @@
+services:
+  citizen-db:
+    image: "postgres:latest"
+    environment:
+      - "POSTGRES_DB=citizen"
+      - "POSTGRES_PASSWORD=123"
+      - "POSTGRES_USER=postgres"
+    volumes:
+      - "../data/citizen:/var/lib/postgresql/data"
+      - "../ddl-scripts/citizen:/docker-entrypoint-initdb.d"
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: "10s"
+      timeout: "5s"
+      retries: 5
+
+  provider-01-db:
+    image: "postgres:latest"
+    environment:
+      - "POSTGRES_DB=provider_01"
+      - "POSTGRES_PASSWORD=123"
+      - "POSTGRES_USER=postgres"
+    volumes:
+      - "../data/provider_01:/var/lib/postgresql/data"
+      - "../ddl-scripts/provider:/docker-entrypoint-initdb.d"
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: "10s"
+      timeout: "5s"
+      retries: 5
+
+  provider-02-db:
+    image: "postgres:latest"
+    environment:
+      - "POSTGRES_DB=provider_02"
+      - "POSTGRES_PASSWORD=123"
+      - "POSTGRES_USER=postgres"
+    volumes:
+      - "../data/provider_02:/var/lib/postgresql/data"
+      - "../ddl-scripts/provider:/docker-entrypoint-initdb.d"
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: "10s"
+      timeout: "5s"
+      retries: 5
+
+  provider-03-db:
+    image: "postgres:latest"
+    environment:
+      - "POSTGRES_DB=provider_03"
+      - "POSTGRES_PASSWORD=123"
+      - "POSTGRES_USER=postgres"
+    volumes:
+      - "../data/provider_03:/var/lib/postgresql/data"
+      - "../ddl-scripts/provider:/docker-entrypoint-initdb.d"
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: "10s"
+      timeout: "5s"
+      retries: 5
+
+  city-db:
+    image: "postgres:latest"
+    environment:
+      - "POSTGRES_DB=city"
+      - "POSTGRES_PASSWORD=123"
+      - "POSTGRES_USER=postgres"
+    volumes:
+      - "../data/city:/var/lib/postgresql/data"
+      - "../ddl-scripts/city:/docker-entrypoint-initdb.d"
+    networks:
+      - app-network
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U postgres" ]
+      interval: "10s"
+      timeout: "5s"
+      retries: 5
+
+  gateway:
+    build:
+      context: "../gateway"
+    ports:
+      - "8081:8081"
+    environment:
+      - "PROVIDER_01_ROUTE_URI=http://provider-01:9081"
+      - "PROVIDER_02_ROUTE_URI=http://provider-02:9081"
+      - "PROVIDER_03_ROUTE_URI=http://provider-03:9081"
+      - "CITY_ROUTE_URI=http://city:8083"
+    networks:
+      - app-network
+
+  citizen:
+    build:
+      context: "../citizen"
+    environment:
+      - "SPRING_DATASOURCE_URL=jdbc:postgresql://citizen-db:5432/citizen"
+      - "SPRING_DATASOURCE_USERNAME=postgres"
+      - "SPRING_DATASOURCE_PASSWORD=123"
+      - "SPRING.JPA.HIBERNATE.DDL-AUTO=none"
+      - "GATEWAY_URL=http://gateway:8081"
+    depends_on:
+      citizen-db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  provider-01:
+    build:
+      context: "../provider"
+    environment:
+      - "SPRING_DATASOURCE_URL=jdbc:postgresql://provider-01-db:5432/provider_01"
+      - "SPRING_DATASOURCE_USERNAME=postgres"
+      - "SPRING_DATASOURCE_PASSWORD=123"
+      - "SPRING.JPA.HIBERNATE.DDL-AUTO=none"
+      - "ID=1"
+    depends_on:
+      provider-01-db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  provider-02:
+    build:
+      context: "../provider"
+    environment:
+      - "SPRING_DATASOURCE_URL=jdbc:postgresql://provider-02-db:5432/provider_02"
+      - "SPRING_DATASOURCE_USERNAME=postgres"
+      - "SPRING_DATASOURCE_PASSWORD=123"
+      - "SPRING.JPA.HIBERNATE.DDL-AUTO=none"
+      - "ID=2"
+    depends_on:
+      provider-02-db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  provider-03:
+    build:
+      context: "../provider"
+    environment:
+      - "SPRING_DATASOURCE_URL=jdbc:postgresql://provider-03-db:5432/provider_03"
+      - "SPRING_DATASOURCE_USERNAME=postgres"
+      - "SPRING_DATASOURCE_PASSWORD=123"
+      - "SPRING.JPA.HIBERNATE.DDL-AUTO=none"
+      - "ID=3"
+    depends_on:
+      provider-03-db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+  city:
+    build:
+      context: "../city"
+    environment:
+      - "SPRING_DATASOURCE_URL=jdbc:postgresql://city-db:5432/city"
+      - "SPRING_DATASOURCE_USERNAME=postgres"
+      - "SPRING_DATASOURCE_PASSWORD=123"
+      - "SPRING.JPA.HIBERNATE.DDL-AUTO=none"
+      - "GATEWAY_URL=http://gateway:8081"
+    depends_on:
+      city-db:
+        condition: service_healthy
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
