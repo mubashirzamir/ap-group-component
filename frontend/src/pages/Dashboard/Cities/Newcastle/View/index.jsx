@@ -3,6 +3,7 @@ import { Table } from "antd";
 import { useEffect, useState } from "react";
 import NewcastleService from "@/services/NewcastleService.jsx";
 import { genericNetworkError, renderDateTime } from "@/helpers/utils.jsx";
+import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 
 const tableProps = {
   scroll: { x: "max-content" },
@@ -47,12 +48,16 @@ const columns = [
 const View = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  const [errored, setErrored] = useState(null);
 
   const fetchData = () => {
     setLoading(true);
     NewcastleService.cityConsumptions()
       .then((response) => setData(response))
-      .catch(genericNetworkError)
+      .catch((e) => {
+        setErrored(true);
+        genericNetworkError(e);
+      })
       .finally(() => setLoading(false));
   };
 
@@ -71,13 +76,15 @@ const View = () => {
 
   return (
     <DashboardPage breadcrumbs={[{ title: "Newcastle" }, { title: "View" }]}>
-      <Table
-        {...tableProps}
-        dataSource={data}
-        columns={columns}
-        rowKey="id"
-        loading={loading}
-      />
+      <DataWrapper data={data} loading={loading} errored={errored}>
+        <Table
+          {...tableProps}
+          dataSource={data}
+          columns={columns}
+          rowKey="id"
+          loading={loading}
+        />
+      </DataWrapper>
     </DashboardPage>
   );
 };

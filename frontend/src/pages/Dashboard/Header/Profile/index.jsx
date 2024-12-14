@@ -5,7 +5,7 @@ import {
   LogoutOutlined,
   MailOutlined,
 } from "@ant-design/icons";
-import AvatarIcon from "@/components/AvatarIcon.jsx";
+import AvatarIcon from "@/components/AvatarIcon/AvatarIcon.jsx";
 import { useAuth } from "@/helpers/Auth/AuthProvider.jsx";
 
 const downCircleStyle = {
