@@ -1,3 +1,5 @@
+// src/pages/Visualization.jsx
+
 import React, { useEffect, useState, useMemo } from "react";
 import DashboardPage from "@/components/DashboardPage/index.jsx";
 import { Select, Skeleton, Alert } from "antd";
@@ -11,7 +13,7 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
-import NewcastleService from "@/services/SunderlandService.jsx";
+import SunderlandService from "@/services/SunderlandService.jsx";
 import { genericNetworkError } from "@/helpers/utils.jsx";
 import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 import CityBarChart from "@/components/Charts/CityBarChart.jsx"; // Import the CityBarChart component
@@ -50,7 +52,7 @@ const COLORS = [
   "#316395",
 ];
 
-// Chart options with stacking enabled for providers
+// Chart options with stacking disabled for providers
 const providersChartOptions = {
   responsive: true,
   maintainAspectRatio: false, // Allows the chart to resize dynamically
@@ -84,7 +86,7 @@ const providersChartOptions = {
           size: 14,
         },
       },
-      stacked: true, // Enable stacking on the x-axis
+      stacked: false, // Disable stacking on the x-axis
       ticks: {
         autoSkip: false, // Ensure all labels are shown
       },
@@ -98,7 +100,7 @@ const providersChartOptions = {
         },
       },
       beginAtZero: true,
-      stacked: true, // Enable stacking on the y-axis
+      stacked: false, // Disable stacking on the y-axis
     },
   },
   elements: {
@@ -129,7 +131,7 @@ const Visualization = () => {
     setProvidersChartErrored(null);
 
     try {
-      const response = await NewcastleService.getMonthlyAverageConsumptionByProvider(selectedYear);
+      const response = await SunderlandService.getMonthlyAverageConsumptionByProvider(selectedYear);
       setProvidersChartDataRaw(response);
     } catch (error) {
       setProvidersChartErrored(true);
@@ -145,7 +147,7 @@ const Visualization = () => {
     setCityChartErrored(null);
 
     try {
-      const response = await NewcastleService.getMonthlyAverageConsumptionForCity(selectedYear);
+      const response = await SunderlandService.getMonthlyAverageConsumptionForCity(selectedYear);
       setCityChartDataRaw(response);
     } catch (error) {
       setCityChartErrored(true);
@@ -202,7 +204,7 @@ const Visualization = () => {
   }, [providersChartDataRaw]);
 
   return (
-    <DashboardPage breadcrumbs={[{ title: "Newcastle" }, { title: "Visualization" }]}>
+    <DashboardPage breadcrumbs={[{ title: "Sunderland" }, { title: "Visualization" }]}>
       {/* Year Selection Dropdown */}
       <div style={{ marginBottom: 20, display: "flex", justifyContent: "flex-end" }}>
         <Select
@@ -219,7 +221,7 @@ const Visualization = () => {
         </Select>
       </div>
 
-      {/* Providers Stacked Bar Chart */}
+      {/* Providers Non-Stacked Bar Chart */}
       <DataWrapper data={providersChartDataRaw} loading={providersChartLoading} errored={providersChartErrored}>
         <div style={{ position: "relative", height: "500px", width: "100%", marginTop: 40 }}>
           {providersChartLoading ? (

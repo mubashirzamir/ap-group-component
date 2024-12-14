@@ -1,4 +1,4 @@
-// src/components/Chart/CityBarChart.jsx
+// src/components/Charts/CityBarChart.jsx
 
 import React, { useMemo } from "react";
 import { Bar } from "react-chartjs-2";
