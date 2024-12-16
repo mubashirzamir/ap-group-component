@@ -70,6 +70,22 @@ const SunderlandService = {
       throw error;
     }
   },
+
+  /**
+   * Fetches aggregated consumption data based on the selected time range.
+   * @param {string} timeRange - One of 'LAST_24_HOURS', 'LAST_7_DAYS', 'LAST_30_DAYS'
+   * @returns {Promise<Object>} - The aggregated consumption data
+   */
+  getAggregatedConsumptionData: async (timeRange) => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/data/consumption`, {
+        params: { timeRange },
+      });
+      return response.data;
+    } catch (error) {
+      throw error;
+    }
+  },
 };
 
 export default SunderlandService;
