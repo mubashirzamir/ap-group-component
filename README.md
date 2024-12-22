@@ -7,8 +7,8 @@
 | Alvin Kho Yien Yang        | w24017214@northumbria.ac.uk | Darlington    |       |  
 | Avinash Saha               | w24036703@northumbria.ac.uk | Durham        |       | 
 | Mubashir Zamir             | w24029487@northumbria.ac.uk | Newcastle     | 8081  | 
-| Muhammad Murtaz Amir Naqvi | w24034050@northumbria.ac.uk | Middlesbrough |       |   
-| Shubham Goswami            | w24038579@northumbria.ac.uk | Sunderland    |       |
+| Muhammad Murtaz Amir Naqvi | w24034050@northumbria.ac.uk | Sunderland    |       |   
+| Shubham Goswami            | w24038579@northumbria.ac.uk | Middlesbrough |       |
 
 ### Note
 
