@@ -76,12 +76,12 @@ public class SpringSecurityConfig {
         return http
                 .cors(c -> c.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
+                .addFilterBefore(this.jwtRequestFilter(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register", "/auth/login").permitAll()
                         .anyRequest().authenticated()
                 )
-                .addFilterBefore(this.jwtRequestFilter(), UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 }

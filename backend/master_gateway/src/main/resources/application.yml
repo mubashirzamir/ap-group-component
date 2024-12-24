@@ -1,0 +1,18 @@
+allowed_origins: http://localhost:5173
+server:
+  port: 8080
+spring:
+  application:
+    name: master_gateway
+
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: newcastle-service
+            uri: http://localhost:8081
+            predicates:
+              - Path=/city/newcastle/**
+            filters:
+              - stripPrefix=2
+              - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
