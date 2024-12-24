@@ -22,10 +22,19 @@ export const validationError = (error, form) => {
 export const genericNetworkError = (error) => {
   console.error(error);
 
-  return notification.error({
+  notification.error({
     ...notificationProps,
     message: getErrorMessage(error),
   });
+
+  if (error?.response?.status === 401) {
+    // Delay the logout action to allow the notification to be visible
+    setTimeout(() => {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
+      window.location.reload();
+    }, 1000);
+  }
 };
 
 const getErrorMessage = (error) => {
@@ -56,18 +65,6 @@ const getErrorMessage = (error) => {
       return "500: Internal Server Error";
     default:
       return "Something went wrong";
-  }
-};
-
-export const filtersToQueryParams = (filters) => {
-  try {
-    if (Object.keys(filters).length === 0) {
-      return "";
-    }
-
-    return "?" + new URLSearchParams(filters).toString();
-  } catch (error) {
-    console.error(error);
   }
 };
 
