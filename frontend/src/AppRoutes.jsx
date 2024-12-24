@@ -1,5 +1,5 @@
 import { Route, Routes as RouterRoutes } from "react-router-dom";
-import NotFound from "@/pages/Errors/NotFound/NotFound.jsx";
+import NotFound from "@/pages/Errors/NotFound/index.jsx";
 import DarlingtonView from "@/pages/Dashboard/Cities/Darlington/View/index.jsx";
 import DarlingtonVisualization from "@/pages/Dashboard/Cities/Darlington/Visualization/index.jsx";
 import DurhamView from "@/pages/Dashboard/Cities/Durham/View/index.jsx";
