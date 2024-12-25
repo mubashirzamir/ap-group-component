@@ -1,5 +1,6 @@
 package com.group_component.master_gateway.config;
 
+import com.group_component.master_gateway.filters.RemoveDuplicateHeaders;
 import com.group_component.master_gateway.security.JwtRequestFilter;
 import com.group_component.master_gateway.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Value;
@@ -77,6 +78,7 @@ public class SpringSecurityConfig {
                 .cors(c -> c.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(this.jwtRequestFilter(), UsernamePasswordAuthenticationFilter.class)
+                .addFilterAfter(new RemoveDuplicateHeaders(), UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests(authorize -> authorize
                         .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/register", "/auth/login").permitAll()

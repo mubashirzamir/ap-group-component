@@ -10,9 +10,9 @@ spring:
       mvc:
         routes:
           - id: newcastle-service
-            uri: http://localhost:8081
+            uri: https://exciting-calf-tidy.ngrok-free.app
             predicates:
               - Path=/city/newcastle/**
             filters:
-              - stripPrefix=2
               - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+              - stripPrefix=2
