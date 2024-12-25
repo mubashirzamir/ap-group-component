@@ -1,4 +1,4 @@
-allowed_origins: http://localhost:5173
+allowed_origins: *
 server:
   port: 8080
 spring:
