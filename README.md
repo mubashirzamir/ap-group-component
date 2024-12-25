@@ -1,3 +1,5 @@
+# https://frontend-ap-group-component.vercel.app/
+
 # KF7014 Advanced Programming - Group Instructions
 
 ## Group Members
@@ -85,11 +87,23 @@ city’s dashboard.
 
 #### API Base Path
 
-Add your city’s API base path to the `.env` file in the `/frontend` directory. For example:
+##### Development
 
-- `VITE_NEWCASTLE_API_BASE_URL=http://localhost:8080/city/newcastle`
+Add your city’s API base path to the `.env.development` file in the `/frontend` directory. For example:
+
+- e.g. `VITE_NEWCASTLE_API_BASE_URL=http://localhost:8080/city/newcastle`
 - To authenticate requests through the master gateway, use the master gateway URL: `http://localhost:8080/city/<your-city-name>`.
-- Make sure the `application.yml` file in the `master_gateway` project is configured for your city.
+  - Make sure the `application.yml` file in the `master_gateway` project is configured for your city.
+
+##### Production
+
+Add your city’s API base path to the `.env.production` file in the `/frontend` directory. For example:
+
+- For this step your individual assessment should be deployed somewhere with a public URL.
+  - A simple way to do this is to use ngrok to expose your localhost to the internet: https://ngrok.com/blog-post/free-static-domains-ngrok-users
+- e.g. `VITE_NEWCASTLE_API_BASE_URL=https://gateway-ap-group-component.onrender.com/city/newcastle`
+- To authenticate requests through the master gateway, use the master gateway URL: `https://gateway-ap-group-component.onrender.com/city/<your-city-name>`.
+  - Make sure the `application.yml` file in the `master_gateway` project is configured for your city.
 
 #### Service File
 
