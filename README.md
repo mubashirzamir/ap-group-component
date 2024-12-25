@@ -73,6 +73,8 @@
 Place your individual assessment files in the appropriate directory:
 
 - `/backend/city/individual_assessment` (e.g., `/backend/newcastle/individual_assessment` for Newcastle)
+- Add instructions on how to run your individual assessment in a <your-city-name>-instructions.md file in the root of
+  the project, e.g., `newcastle-instructions.md`.
 
 ### 2. Frontend Development
 
@@ -92,18 +94,23 @@ city’s dashboard.
 Add your city’s API base path to the `.env.development` file in the `/frontend` directory. For example:
 
 - e.g. `VITE_NEWCASTLE_API_BASE_URL=http://localhost:8080/city/newcastle`
-- To authenticate requests through the master gateway, use the master gateway URL: `http://localhost:8080/city/<your-city-name>`.
-  - Make sure the `application.yml` file in the `master_gateway` project is configured for your city.
+- To authenticate requests through the master gateway, use the master gateway URL:
+  `http://localhost:8080/city/<your-city-name>`.
+    - Make sure the `application.yml` and `application-dev.yml` file in the `master_gateway` project is configured for
+      your city.
 
 ##### Production
 
 Add your city’s API base path to the `.env.production` file in the `/frontend` directory. For example:
 
 - For this step your individual assessment should be deployed somewhere with a public URL.
-  - A simple way to do this is to use ngrok to expose your localhost to the internet: https://ngrok.com/blog-post/free-static-domains-ngrok-users
+    - A simple way to do this is to use ngrok to expose your localhost to the
+      internet: https://ngrok.com/blog-post/free-static-domains-ngrok-users
 - e.g. `VITE_NEWCASTLE_API_BASE_URL=https://gateway-ap-group-component.onrender.com/city/newcastle`
-- To authenticate requests through the master gateway, use the master gateway URL: `https://gateway-ap-group-component.onrender.com/city/<your-city-name>`.
-  - Make sure the `application.yml` file in the `master_gateway` project is configured for your city.
+- To authenticate requests through the master gateway, use the master gateway URL:
+  `https://gateway-ap-group-component.onrender.com/city/<your-city-name>`.
+    - Make sure the `application.yml` and `application-prod.yml` file in the `master_gateway` project is configured for
+      your city.
 
 #### Service File
 
@@ -128,40 +135,41 @@ You can enable CORS in your API Gateway by modifying the `application.properties
 ## Git Workflow Instructions
 
 1. **Branching Out from Main**
-   - Always create a new branch from the `main` branch before making any changes.
-   - Name the branch after yourself for easier identification. For example:
-     ```bash
-     git checkout main
-     git pull origin main
-     git checkout -b your-name
-     ```
+    - Always create a new branch from the `main` branch before making any changes.
+    - Name the branch after yourself for easier identification. For example:
+      ```bash
+      git checkout main
+      git pull origin main
+      git checkout -b your-name
+      ```
 
 2. **Making Changes**
-   - Work on your own branch and commit your changes regularly.
-     ```bash
-     git add .
-     git commit -m "Your descriptive commit message"
-     ```
+    - Work on your own branch and commit your changes regularly.
+      ```bash
+      git add .
+      git commit -m "Your descriptive commit message"
+      ```
 
 3. **Keeping Your Branch Updated with Main**
-   - Regularly pull changes from the `main` branch into your branch to keep it updated and avoid merge conflicts:
-     ```bash
-     git checkout main
-     git pull origin main
-     git checkout your-name
-     git merge main
-     ```
+    - Regularly pull changes from the `main` branch into your branch to keep it updated and avoid merge conflicts:
+      ```bash
+      git checkout main
+      git pull origin main
+      git checkout your-name
+      git merge main
+      ```
 
 4. **Creating a Pull Request**
-   - Once your changes are ready, push your branch to the remote repository:
-     ```bash
-     git push origin your-name
-     ```
-   - Open a Pull Request (PR) on the repository, targeting the `main` branch.
-   - Ensure your branch is up-to-date with `main` before creating the PR.
+    - Once your changes are ready, push your branch to the remote repository:
+      ```bash
+      git push origin your-name
+      ```
+    - Open a Pull Request (PR) on the repository, targeting the `main` branch.
+    - Ensure your branch is up-to-date with `main` before creating the PR.
 
 5. **Avoid Pushing Directly to Main**
-   - **Do not push your changes directly to the `main` branch**. Always create a Pull Request and wait for it to be reviewed and approved.
+    - **Do not push your changes directly to the `main` branch**. Always create a Pull Request and wait for it to be
+      reviewed and approved.
 
 By following these steps, we can maintain a clean workflow and minimize merge conflicts.
 
@@ -169,37 +177,60 @@ By following these steps, we can maintain a clean workflow and minimize merge co
 
 ## Adding Routes to `application.yml` in `master_gateway`
 
-If you want your city-specific routes to be proxied through the main gateway, you need to add the routes to the `application.yml` file in the `master_gateway` project.
+If you want your city-specific routes to be proxied through the main gateway, you need to add the routes to the
+yml files in the `master_gateway` project.
+
+`application.yml`
 
 ```yaml
-allowed_origins: http://localhost:5173
+allowed_origins: '*'
 server:
   port: 8080
 spring:
+  profiles:
+    active: dev
   application:
     name: master_gateway
-
   cloud:
     gateway:
       mvc:
         routes:
           - id: newcastle-service
-            uri: http://localhost:8081
+            uri: ${gateway.uris.newcastle-service}
             predicates:
               - Path=/city/newcastle/**
             filters:
-              - stripPrefix=2
               - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
-          - id: your-city-service
-            uri: http://localhost:<your-port> // or any other URL if your service is hosted elsewhere
+              - stripPrefix=2
+          - id: backend-sunderland
+            uri: ${gateway.uris.your-city-service}
             predicates:
-              - Path=/city/your-city/**
+              - Path=/city/sunderland/**
             filters:
-              - stripPrefix=2
               - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+              - stripPrefix=2
 ```
 
-This configuration ensures that the main gateway properly proxies requests to your city's backend microservice while applying the necessary authentication filters.
+`application-dev.yml`
+
+```yaml
+gateway:
+  uris:
+    newcastle-service: http://localhost:8081
+    your-city-service: http://localhost:<port>
+```
+
+`application-prod.yml`
+
+```yaml
+gateway:
+  uris:
+    newcastle-service: https://newcastle-service.onrender.com
+    your-city-service: <your-city-uri>
+```
+
+This configuration ensures that the main gateway properly proxies requests to your city's backend microservice while
+applying the necessary authentication filters.
 
 ---
 
