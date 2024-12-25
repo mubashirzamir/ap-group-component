@@ -1,0 +1,4 @@
+gateway:
+  uris:
+    newcastle-service: http://localhost:8081
+    sunderland-service: http://localhost:8082

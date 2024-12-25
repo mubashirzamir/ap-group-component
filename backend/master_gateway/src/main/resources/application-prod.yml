@@ -1,0 +1,4 @@
+gateway:
+  uris:
+    newcastle-service: https://exciting-calf-tidy.ngrok-free.app
+    sunderland-service: https://backend.qrtechnologys.com

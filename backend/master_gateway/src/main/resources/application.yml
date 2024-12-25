@@ -2,22 +2,23 @@ allowed_origins: '*'
 server:
   port: 8080
 spring:
+  profiles:
+    active: dev
   application:
     name: master_gateway
-
   cloud:
     gateway:
       mvc:
         routes:
           - id: newcastle-service
-            uri: https://exciting-calf-tidy.ngrok-free.app
+            uri: ${gateway.uris.newcastle-service}
             predicates:
               - Path=/city/newcastle/**
             filters:
               - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
               - stripPrefix=2
           - id: backend-sunderland
-            uri: https://backend.qrtechnologys.com
+            uri: ${gateway.uris.sunderland-service}
             predicates:
               - Path=/city/sunderland/**
             filters:
