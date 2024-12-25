@@ -1,4 +1,4 @@
-import axios from "axios";
+import request from "@/request.js";
 
 const API_BASE_URL = import.meta.env.VITE_SUNDERLAND_API_BASE_URL + "/api";
 
@@ -11,10 +11,10 @@ const SunderlandService = {
    */
   getAggregatedDataByProvider: async (timeRange = "LAST_30_DAYS") => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/data/providers`, {
+      const response = await request.get(`${API_BASE_URL}/data/providers`, {
         params: { timeRange },
       });
-      return response.data;
+      return response;
     } catch (error) {
       throw error;
     }
@@ -28,27 +28,30 @@ const SunderlandService = {
    */
   getAggregatedDataForCity: async (timeRange = "LAST_30_DAYS") => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/data/city`, {
+      const response = await request.get(`${API_BASE_URL}/data/city`, {
         params: { timeRange },
       });
-      return response.data;
+      return response;
     } catch (error) {
       throw error;
     }
   },
-  
-   /**
+
+  /**
    * Fetches monthly average consumption data for each provider for a specified year.
    *
    * @param {number} year - The year for which to fetch data (e.g., 2024).
    * @returns {Promise<Array>} - A promise that resolves to an array of monthly average consumption data by provider.
    */
-   getMonthlyAverageConsumptionByProvider: async (year = 2024) => {
+  getMonthlyAverageConsumptionByProvider: async (year = 2024) => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/graphs/monthly-average/providers`, {
-        params: { year },
-      });
-      return response.data;
+      const response = await request.get(
+        `${API_BASE_URL}/graphs/monthly-average/providers`,
+        {
+          params: { year },
+        },
+      );
+      return response;
     } catch (error) {
       throw error;
     }
@@ -62,10 +65,13 @@ const SunderlandService = {
    */
   getMonthlyAverageConsumptionForCity: async (year = 2024) => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/graphs/monthly-average/city`, {
-        params: { year },
-      });
-      return response.data;
+      const response = await request.get(
+        `${API_BASE_URL}/graphs/monthly-average/city`,
+        {
+          params: { year },
+        },
+      );
+      return response;
     } catch (error) {
       throw error;
     }
@@ -78,10 +84,10 @@ const SunderlandService = {
    */
   getAggregatedConsumptionData: async (timeRange) => {
     try {
-      const response = await axios.get(`${API_BASE_URL}/data/consumption`, {
+      const response = await request.get(`${API_BASE_URL}/data/consumption`, {
         params: { timeRange },
       });
-      return response.data;
+      return response;
     } catch (error) {
       throw error;
     }
