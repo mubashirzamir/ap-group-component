@@ -16,3 +16,10 @@ spring:
             filters:
               - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
               - stripPrefix=2
+          - id: backend-sunderland
+            uri: https://backend.qrtechnologys.com
+            predicates:
+              - Path=/city/sunderland/**
+            filters:
+              - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+              - stripPrefix=2
