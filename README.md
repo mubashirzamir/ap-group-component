@@ -38,7 +38,7 @@
 
    ```bash
    cd /backend/master_gateway
-   mvn clean install
+   ./mvnw clean install
    cd /target
 
 2. **Run the Authentication Server**  
@@ -87,7 +87,9 @@ city’s dashboard.
 
 Add your city’s API base path to the `.env` file in the `/frontend` directory. For example:
 
-- `VITE_NEWCASTLE_API_BASE_URL=http://localhost:8081`
+- `VITE_NEWCASTLE_API_BASE_URL=http://localhost:8080/city/newcastle`
+- To authenticate requests through the master gateway, use the master gateway URL: `http://localhost:8080/city/<your-city-name>`.
+- Make sure the `application.yml` file in the `master_gateway` project is configured for your city.
 
 #### Service File
 
@@ -107,31 +109,6 @@ You can enable CORS in your API Gateway by modifying the `application.properties
 
 - `/backend/newcastle/individual-assessment/individual-assessment/gateway/src/main/resources/application.properties`
 
----
-
-## Running Mubashir's Backend Microservices (Newcastle)
-
-To run the backend microservices for Newcastle, follow the instructions below:
-
-1. Navigate to the Newcastle directory:
-
-   ```bash
-   cd /backend/newcastle/individual-assessment/individual-assessment/main
-   ```
-2. Build the docker containers:
-
-   ```bash
-   docker-compose build
-   ```
-
-3. Run the docker containers:
-
-   ```bash
-    docker-compose up -d
-    ```
-
-If these microservices are running, you'll be able to see the data in the Newcastle dashboard.
-   
 ---
 
 ## Git Workflow Instructions
@@ -173,6 +150,42 @@ If these microservices are running, you'll be able to see the data in the Newcas
    - **Do not push your changes directly to the `main` branch**. Always create a Pull Request and wait for it to be reviewed and approved.
 
 By following these steps, we can maintain a clean workflow and minimize merge conflicts.
+
+---
+
+## Adding Routes to `application.yml` in `master_gateway`
+
+If you want your city-specific routes to be proxied through the main gateway, you need to add the routes to the `application.yml` file in the `master_gateway` project.
+
+```yaml
+allowed_origins: http://localhost:5173
+server:
+  port: 8080
+spring:
+  application:
+    name: master_gateway
+
+  cloud:
+    gateway:
+      mvc:
+        routes:
+          - id: newcastle-service
+            uri: http://localhost:8081
+            predicates:
+              - Path=/city/newcastle/**
+            filters:
+              - stripPrefix=2
+              - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+          - id: your-city-service
+            uri: http://localhost:<your-port> // or any other URL if your service is hosted elsewhere
+            predicates:
+              - Path=/city/your-city/**
+            filters:
+              - stripPrefix=2
+              - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+```
+
+This configuration ensures that the main gateway properly proxies requests to your city's backend microservice while applying the necessary authentication filters.
 
 ---
 
