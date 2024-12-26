@@ -91,3 +91,7 @@ export const generateColor = (initial) => {
 export const randomColor = () => {
   return `hsl(${Math.random() * 360}, ${Math.random() * 100}%, ${Math.random() * 50 + 25}%)`;
 };
+
+export const toDecimalPlaces = (value, places = 2) => {
+  return Number(value).toFixed(places);
+};
