@@ -3,8 +3,6 @@ import All from "@/pages/Dashboard/Cities/Newcastle/View/All.jsx";
 import ByProvider from "@/pages/Dashboard/Cities/Newcastle/View/ByProvider.jsx";
 import ForCity from "@/pages/Dashboard/Cities/Newcastle/View/ForCity.jsx";
 
-export const refreshInterval = 30000; // 30 seconds
-
 const View = () => {
   return (
     <DashboardPage breadcrumbs={[{ title: "Newcastle" }, { title: "View" }]}>

@@ -3,7 +3,7 @@ import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 import { genericNetworkError, renderDateTime } from "@/helpers/utils.jsx";
 import { useEffect, useState } from "react";
 import NewcastleService from "@/services/NewcastleService.jsx";
-import { refreshInterval } from "@/pages/Dashboard/Cities/Newcastle/View/index.jsx";
+import { REFRESH_INTERVAl_NEWCASTLE } from "@/helpers/constants.jsx";
 
 const tableProps = {
   scroll: { x: "max-content" },
@@ -65,10 +65,10 @@ const All = () => {
     // Initial fetch on mount
     fetchData();
 
-    // Set interval to fetch data periodically (every 5 seconds)
+
     const intervalId = setInterval(() => {
       fetchData();
-    }, refreshInterval);
+    }, REFRESH_INTERVAl_NEWCASTLE);
 
     // Cleanup: Clear interval on unmount to prevent memory leaks
     return () => clearInterval(intervalId);

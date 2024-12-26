@@ -3,14 +3,14 @@ import { genericNetworkError, toDecimalPlaces } from "@/helpers/utils.jsx";
 import { useEffect, useState } from "react";
 import NewcastleService from "@/services/NewcastleService.jsx";
 import { Card } from "antd";
-import { refreshInterval } from "@/pages/Dashboard/Cities/Newcastle/View/index.jsx";
 import TimeRangeFilter from "@/pages/Dashboard/Cities/Newcastle/View/TimeRangeFilter.jsx";
+import { REFRESH_INTERVAl_NEWCASTLE } from "@/helpers/constants.jsx";
 
 const { Meta } = Card;
 
 const ByProvider = () => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   const [errored, setErrored] = useState(null);
   const [timeRange, setTimeRange] = useState("LAST_30_DAYS");
 
@@ -29,10 +29,10 @@ const ByProvider = () => {
     // Initial fetch on mount
     fetchData();
 
-    // Set interval to fetch data periodically (every 5 seconds)
+    
     const intervalId = setInterval(() => {
       fetchData();
-    }, refreshInterval);
+    }, REFRESH_INTERVAl_NEWCASTLE);
 
     // Cleanup: Clear interval on unmount to prevent memory leaks
     return () => clearInterval(intervalId);
@@ -56,13 +56,13 @@ const ByProvider = () => {
         <div className="grid grid-cols-2 gap-4">
           <Card>
             <Meta
-              title={toDecimalPlaces(data.totalConsumption, 0)}
+              title={toDecimalPlaces(data?.totalConsumption, 0)}
               description="Total Consumption (Wh)"
             />
           </Card>
           <Card>
             <Meta
-              title={toDecimalPlaces(data.averageConsumption, 0)}
+              title={toDecimalPlaces(data?.averageConsumption, 0)}
               description="Average Consumption (Wh)"
             />
           </Card>
