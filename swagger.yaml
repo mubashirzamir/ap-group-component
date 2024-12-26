@@ -1,0 +1,276 @@
+openapi: 3.0.3
+info:
+  title: Smart City Microservice API
+  description: API documentation for Smart City Microservice
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api
+    description: Local server
+
+tags:
+  - name: Data View API
+    description: APIs for retrieving aggregated consumption data
+
+paths:
+  /data/providers:
+    get:
+      tags:
+        - Data View API
+      summary: Get Aggregated Consumption Data by Provider
+      description: Retrieve aggregated average consumption data for each provider within a specified time range.
+      parameters:
+        - in: query
+          name: timeRange
+          schema:
+            type: string
+            enum: [LAST_24_HOURS, LAST_7_DAYS, LAST_30_DAYS]
+            default: LAST_30_DAYS
+          description: Predefined time range for data aggregation (e.g., LAST_24_HOURS, LAST_7_DAYS, LAST_30_DAYS)
+          example: LAST_30_DAYS
+      responses:
+        '200':
+          description: Successfully retrieved aggregated data by provider
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AggregatedDataByProviderDTO'
+              examples:
+                AggregatedDataByProviderExample:
+                  value:
+                    - providerId: provider-a
+                      totalConsumption: 1500.75
+                      averageDailyConsumption: 50.03
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid timeRange value."
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "An unexpected error occurred."
+
+  /data/city:
+    get:
+      tags:
+        - Data View API
+      summary: Get Aggregated Consumption Data for City
+      description: Retrieve aggregated average consumption data for the entire city within a specified time range.
+      parameters:
+        - in: query
+          name: timeRange
+          schema:
+            type: string
+            enum: [LAST_24_HOURS, LAST_7_DAYS, LAST_30_DAYS]
+            default: LAST_30_DAYS
+          description: Predefined time range for data aggregation (e.g., LAST_24_HOURS, LAST_7_DAYS, LAST_30_DAYS)
+          example: LAST_30_DAYS
+      responses:
+        '200':
+          description: Successfully retrieved aggregated data for city
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AggregatedDataForCityDTO'
+              examples:
+                AggregatedDataForCityExample:
+                  value:
+                    totalConsumption: 50000.50
+                    averageDailyConsumption: 1666.68
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid timeRange value."
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "An unexpected error occurred."
+
+  /graphs/monthly-average/providers:
+    get:
+      tags:
+        - Data View API
+      summary: Get Monthly Average Consumption per Provider
+      description: Retrieve monthly average consumption data for each provider for a specified year.
+      parameters:
+        - in: query
+          name: year
+          schema:
+            type: integer
+            default: 2024
+          description: Year for which to retrieve monthly averages
+          example: 2024
+      responses:
+        '200':
+          description: Successfully retrieved monthly averages per provider
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MonthlyAverageDTO'
+              examples:
+                MonthlyAverageByProviderExample:
+                  value:
+                    - providerId: provider-a
+                      month: 2024-12
+                      averageConsumption: 51.42
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid year value."
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "An unexpected error occurred."
+
+  /graphs/monthly-average/city:
+    get:
+      tags:
+        - Data View API
+      summary: Get Monthly Average Consumption for City
+      description: Retrieve monthly average consumption data for the entire city for a specified year.
+      parameters:
+        - in: query
+          name: year
+          schema:
+            type: integer
+            default: 2024
+          description: Year for which to retrieve monthly averages
+          example: 2024
+      responses:
+        '200':
+          description: Successfully retrieved monthly averages for city
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/MonthlyAverageDTO'
+              examples:
+                MonthlyAverageForCityExample:
+                  value:
+                    - providerId: null
+                      month: 2024-12
+                      averageConsumption: 70.95
+        '400':
+          description: Invalid request parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "Invalid year value."
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: "An unexpected error occurred."
+
+components:
+  schemas:
+    MonthlyAverageDTO:
+      type: object
+      description: Monthly average consumption data for a provider or the entire city.
+      properties:
+        providerId:
+          type: string
+          description: Identifier of the provider. Null if the data is for the entire city.
+          example: provider-a
+        month:
+          type: string
+          description: Month in YYYY-MM format.
+          example: "2024-12"
+        averageConsumption:
+          type: number
+          format: double
+          description: Average consumption in kWh.
+          example: 70.95
+      required:
+        - month
+        - averageConsumption
+
+    AggregatedDataByProviderDTO:
+      type: object
+      description: Aggregated consumption data for a specific provider over a defined time range.
+      properties:
+        providerId:
+          type: string
+          description: Identifier of the provider.
+          example: provider-a
+        totalConsumption:
+          type: number
+          format: double
+          description: Total consumption over the time range in kWh.
+          example: 1500.75
+        averageDailyConsumption:
+          type: number
+          format: double
+          description: Average daily consumption over the time range in kWh.
+          example: 50.03
+      required:
+        - providerId
+        - totalConsumption
+        - averageDailyConsumption
+
+    AggregatedDataForCityDTO:
+      type: object
+      description: Aggregated consumption data for the entire city over a defined time range.
+      properties:
+        totalConsumption:
+          type: number
+          format: double
+          description: Total city-wide consumption over the time range in kWh.
+          example: 50000.50
+        averageDailyConsumption:
+          type: number
+          format: double
+          description: Average daily city-wide consumption over the time range in kWh.
+          example: 1666.68
+      required:
+        - totalConsumption
+        - averageDailyConsumption
