@@ -1,5 +1,3 @@
-// src/components/Charts/CityBarChart.jsx
-
 import React, { useMemo } from "react";
 import { Bar } from "react-chartjs-2";
 import { Skeleton, Alert } from "antd";
@@ -69,12 +67,12 @@ const CityBarChart = ({ data, loading, errored }) => {
       return { labels: [], datasets: [] };
     }
 
-    const months = Array.from(new Set(data.map(item => item.month))).sort();
+    const months = Array.from(new Set(data.map((item) => item.month))).sort();
 
     const dataset = {
       label: "City Average Consumption",
-      data: months.map(month => {
-        const record = data.find(item => item.month === month);
+      data: months.map((month) => {
+        const record = data.find((item) => item.month === month);
         return record ? record.averageConsumption : 0;
       }),
       backgroundColor: "#28a745", // A distinct color for the city chart
