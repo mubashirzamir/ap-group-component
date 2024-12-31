@@ -1,7 +1,8 @@
 import React, { useMemo } from "react";
 import { Bar } from "react-chartjs-2";
-import { Skeleton, Alert } from "antd";
+import { Alert } from "antd";
 import { COLORS } from "@/helpers/constants.jsx";
+import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 
 const ProvidersBarChart = ({ data, loading, errored }) => {
   // Define chart options (non-stacked)
@@ -92,17 +93,8 @@ const ProvidersBarChart = ({ data, loading, errored }) => {
   const chartData = useMemo(() => deriveChartData(data), [data]);
 
   return (
-    <div style={{ position: "relative", height: "500px", width: "100%", marginTop: 40 }}>
-      {loading ? (
-        <Skeleton active />
-      ) : errored ? (
-        <Alert
-          message="Error"
-          description="Failed to load providers chart data. Please try again later."
-          type="error"
-          showIcon
-        />
-      ) : chartData.labels.length === 0 ? (
+    <DataWrapper data={data} loading={loading} errored={errored} strategy="spin">
+      {chartData.labels.length === 0 ? (
         <Alert
           message="No Data"
           description="No providers consumption data available for the selected year."
@@ -110,9 +102,11 @@ const ProvidersBarChart = ({ data, loading, errored }) => {
           showIcon
         />
       ) : (
-        <Bar data={chartData} options={chartOptions} />
+        <div style={{ position: "relative", height: "500px", width: "100%", marginTop: 40 }}>
+          <Bar data={chartData} options={chartOptions} />
+        </div>
       )}
-    </div>
+    </DataWrapper>
   );
 };
 

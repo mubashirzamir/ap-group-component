@@ -22,7 +22,7 @@ const cityColumns = [
 ];
 
 const CityStatusTable = ({ data, loading, errored }) => (
-  <DataWrapper data={data} loading={loading} errored={errored}>
+  <DataWrapper data={data} loading={loading} errored={errored} strategy="spin">
     <Table
       {...tableProps}
       dataSource={data ? [data] : []} // Wrap cityData in an array
