@@ -3,16 +3,11 @@ import SunderlandService from "@/services/SunderlandService.jsx";
 import { genericNetworkError } from "@/helpers/utils.jsx";
 import { REFRESH_INTERVAL_SUNDERLAND } from "@/helpers/constants.jsx";
 
-const useVisualizationData = (selectedYear) => {
+const VisualizationDataProvider = (selectedYear) => {
   // Providers Data State
   const [providersChartLoading, setProvidersChartLoading] = useState(false);
   const [providersChartDataRaw, setProvidersChartDataRaw] = useState([]);
   const [providersChartErrored, setProvidersChartErrored] = useState(null);
-
-  // City Data State
-  const [cityChartLoading, setCityChartLoading] = useState(false);
-  const [cityChartDataRaw, setCityChartDataRaw] = useState([]);
-  const [cityChartErrored, setCityChartErrored] = useState(null);
 
   // Fetch Providers Data
   const fetchProvidersData = async () => {
@@ -30,31 +25,14 @@ const useVisualizationData = (selectedYear) => {
     }
   };
 
-  // Fetch City Data
-  const fetchCityData = async () => {
-    setCityChartLoading(true);
-    setCityChartErrored(null);
-
-    try {
-      const response = await SunderlandService.getMonthlyAverageConsumptionForCity(selectedYear);
-      setCityChartDataRaw(response);
-    } catch (error) {
-      setCityChartErrored(true);
-      genericNetworkError(error);
-    } finally {
-      setCityChartLoading(false);
-    }
-  };
 
   useEffect(() => {
     // Initial fetch on mount and whenever selectedYear changes
     fetchProvidersData();
-    fetchCityData();
 
     // Set interval to fetch data periodically using the constant
     const intervalId = setInterval(() => {
       fetchProvidersData();
-      fetchCityData();
     }, REFRESH_INTERVAL_SUNDERLAND); // Use the imported constant
 
     // Cleanup: Clear interval on unmount or when selectedYear changes
@@ -64,11 +42,8 @@ const useVisualizationData = (selectedYear) => {
   return {
     providersChartDataRaw,
     providersChartLoading,
-    providersChartErrored,
-    cityChartDataRaw,
-    cityChartLoading,
-    cityChartErrored,
+    providersChartErrored
   };
 };
 
-export default useVisualizationData;
+export default VisualizationDataProvider;

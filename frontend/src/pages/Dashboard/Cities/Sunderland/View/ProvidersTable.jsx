@@ -28,7 +28,7 @@ const providerColumns = [
 ];
 
 const ProvidersTable = ({ data, loading, errored }) => (
-  <DataWrapper data={data} loading={loading} errored={errored}>
+  <DataWrapper data={data} loading={loading} errored={errored} strategy="spin">
     <Table
       {...tableProps}
       dataSource={data}
