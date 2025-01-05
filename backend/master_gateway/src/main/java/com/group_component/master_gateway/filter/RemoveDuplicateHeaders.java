@@ -1,4 +1,4 @@
-package com.group_component.master_gateway.filters;
+package com.group_component.master_gateway.filter;
 
 import jakarta.servlet.*;
 import jakarta.servlet.http.HttpServletResponse;

@@ -1,5 +1,6 @@
 package com.group_component.master_gateway.controller;
 
+import com.group_component.master_gateway.request.ChangePasswordRequest;
 import com.group_component.master_gateway.request.LoginRequest;
 import com.group_component.master_gateway.request.RegisterRequest;
 import com.group_component.master_gateway.response.MessageResponse;
@@ -27,6 +28,11 @@ public class AuthController {
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody LoginRequest loginRequest) {
         return this.authService.login(loginRequest);
+    }
+
+    @PostMapping("/change-password")
+    public ResponseEntity<?> changePassword(@RequestBody ChangePasswordRequest changePasswordRequest) {
+        return this.authService.changePassword(changePasswordRequest);
     }
 
     @GetMapping("/test")

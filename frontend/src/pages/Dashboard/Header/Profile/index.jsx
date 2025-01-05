@@ -2,24 +2,40 @@ import React from "react";
 import { Dropdown } from "antd";
 import {
   DownCircleFilled,
+  LockOutlined,
   LogoutOutlined,
   MailOutlined,
+  UserDeleteOutlined,
 } from "@ant-design/icons";
 import AvatarIcon from "@/components/AvatarIcon/AvatarIcon.jsx";
 import { useAuth } from "@/helpers/Auth/AuthProvider.jsx";
+import { useNavigate } from "react-router-dom";
 
 const downCircleStyle = {
   color: "#f3f3f3",
 };
 
 const ProfileDropdown = () => {
-  const { user, logoutAction } = useAuth();
+  const navigate = useNavigate();
+  const { user, logoutAction, deleteAccountAction } = useAuth();
 
   const items = [
     {
       key: "email",
       label: user.email,
       icon: <MailOutlined />,
+    },
+    {
+      key: "change-password",
+      label: "Change Password",
+      icon: <LockOutlined />,
+      onClick: () => navigate("/profile/change-password"),
+    },
+    {
+      key: "delete-account",
+      label: "Delete Account",
+      icon: <UserDeleteOutlined />,
+      onClick: deleteAccountAction,
     },
     {
       key: "logout",

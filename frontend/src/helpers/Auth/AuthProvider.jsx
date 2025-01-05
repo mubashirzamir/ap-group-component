@@ -1,12 +1,15 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthService from "@/services/AuthService.jsx";
+import { genericNetworkError } from "@/helpers/utils.jsx";
+import { Modal } from "antd";
 
 const AuthContext = createContext({
   user: null,
   loading: true,
   loginAction: () => {},
   logoutAction: () => {},
+  deleteAccountAction: () => {},
 });
 
 const AuthProvider = ({ children }) => {
@@ -38,8 +41,22 @@ const AuthProvider = ({ children }) => {
     navigate("/login");
   };
 
+  const deleteAccountAction = () => {
+    Modal.confirm({
+      width: 500,
+      title: "Are you sure you want to delete your account?",
+      content: "This action cannot be undone.",
+      onOk: () =>
+        AuthService.deleteAccount(user.email)
+          .then(logoutAction)
+          .catch(genericNetworkError),
+    });
+  };
+
   return (
-    <AuthContext.Provider value={{ user, loading, loginAction, logoutAction }}>
+    <AuthContext.Provider
+      value={{ user, loading, loginAction, logoutAction, deleteAccountAction }}
+    >
       {children}
     </AuthContext.Provider>
   );

@@ -16,6 +16,7 @@ import Dashboard from "@/pages/Dashboard/index.jsx";
 import Home from "@/pages/Dashboard/Home/index.jsx";
 import AuthRoutes from "@/helpers/Auth/AuthRoutes.jsx";
 import Register from "@/pages/Register/index.jsx";
+import ChangePassword from "@/pages/ChangePassword/index.jsx";
 
 const AppRoutes = () => {
   return (
@@ -25,6 +26,7 @@ const AppRoutes = () => {
         <Route path="/register" element={<Register />} />;
       </Route>
       <Route element={<ProtectedRoutes />}>
+        <Route path="/profile/change-password" element={<ChangePassword />} />
         <Route path="/" element={<Dashboard />}>
           {DashboardRoutes()}
         </Route>

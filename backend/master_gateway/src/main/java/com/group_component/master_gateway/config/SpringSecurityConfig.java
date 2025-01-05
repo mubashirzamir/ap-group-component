@@ -1,6 +1,6 @@
 package com.group_component.master_gateway.config;
 
-import com.group_component.master_gateway.filters.RemoveDuplicateHeaders;
+import com.group_component.master_gateway.filter.RemoveDuplicateHeaders;
 import com.group_component.master_gateway.security.JwtRequestFilter;
 import com.group_component.master_gateway.security.JwtUtil;
 import org.springframework.beans.factory.annotation.Value;

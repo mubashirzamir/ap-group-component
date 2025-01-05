@@ -1,5 +1,4 @@
 import { Avatar } from "antd";
-import React from "react";
 import { useAuth } from "@/helpers/Auth/AuthProvider.jsx";
 import { generateColor } from "@/helpers/utils.jsx";
 
