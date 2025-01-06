@@ -36,8 +36,7 @@ public class ChangePasswordService {
         }
 
         User.UserBuilder userBuilder = User.withUsername(this.authenticatedUserService.getAuthenticatedUser().getEmail())
-                .password(this.passwordEncoder.encode(changePasswordRequest.getNewPassword()))
-                .roles("USER");
+                .password(this.passwordEncoder.encode(changePasswordRequest.getNewPassword()));
 
         this.userDetailsManager.updateUser(userBuilder.build());
 

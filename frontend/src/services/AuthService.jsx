@@ -11,11 +11,15 @@ const login = ({ email, password }) => {
 };
 
 const changePassword = ({ currentPassword, newPassword, confirm }) => {
-  return request.post(`${baseUrl}/change-password`, { currentPassword, newPassword, confirm });
+  return request.post(`${baseUrl}/change-password`, {
+    currentPassword,
+    newPassword,
+    confirm,
+  });
 };
 
 const test = () => {
   return request.get(`${baseUrl}/test`);
 };
 
-export default { register, login, changePassword, deleteAccount, test };
+export default { register, login, changePassword, test };

@@ -41,6 +41,10 @@ const ChangePasswordForm = () => {
   };
 
   const onClick = () => {
+    if (form.getFieldsError().some(({ errors }) => errors.length)) {
+      return;
+    }
+
     Modal.confirm({
       width: 500,
       title: "Are you sure you want to change your password?",
@@ -54,14 +58,12 @@ const ChangePasswordForm = () => {
       <Form {...formItemLayout} form={form} onFinish={onFinish}>
         <Form.Item
           name="currentPassword"
-          rules={
-            [
-              {
-                required: true,
-                message: "Current password is required.",
-              },
-            ]
-          }
+          rules={[
+            {
+              required: true,
+              message: "Current password is required.",
+            },
+          ]}
         >
           <Input.Password
             prefix={<InputIcon Icon={LockOutlined} />}
@@ -71,18 +73,16 @@ const ChangePasswordForm = () => {
         <Form.Item
           name="newPassword"
           hasFeedback
-          rules={
-            [
-              {
-                required: true,
-                message: "New password is required.",
-              },
-              {
-                min: 8,
-                message: "New password must be at least 8 characters.",
-              },
-            ]
-          }
+          rules={[
+            {
+              required: true,
+              message: "New password is required.",
+            },
+            {
+              min: 8,
+              message: "New password must be at least 8 characters.",
+            },
+          ]}
         >
           <Input.Password
             prefix={<InputIcon Icon={LockOutlined} />}
@@ -93,23 +93,21 @@ const ChangePasswordForm = () => {
         <Form.Item
           name="confirm"
           hasFeedback
-          dependencies={["new-password"]}
-          rules={
-            [
-              {
-                required: true,
-                message: "Please confirm your new password.",
+          dependencies={["newPassword"]}
+          rules={[
+            {
+              required: true,
+              message: "Please confirm your new password.",
+            },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue("newPassword") === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error("Passwords do not match."));
               },
-              ({ getFieldValue }) => ({
-                validator(_, value) {
-                  if (!value || getFieldValue("new password") === value) {
-                    return Promise.resolve();
-                  }
-                  return Promise.reject(new Error("Passwords do not match."));
-                },
-              }),
-            ]
-          }
+            }),
+          ]}
         >
           <Input.Password
             prefix={<InputIcon Icon={LockOutlined} />}

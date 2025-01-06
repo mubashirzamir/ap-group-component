@@ -1,5 +1,5 @@
 import React from "react";
-import { Dropdown } from "antd";
+import { Dropdown, Modal } from "antd";
 import {
   DownCircleFilled,
   LockOutlined,
@@ -10,6 +10,8 @@ import {
 import AvatarIcon from "@/components/AvatarIcon/AvatarIcon.jsx";
 import { useAuth } from "@/helpers/Auth/AuthProvider.jsx";
 import { useNavigate } from "react-router-dom";
+import { genericNetworkError } from "@/helpers/utils.jsx";
+import UserService from "@/services/UserService.jsx";
 
 const downCircleStyle = {
   color: "#f3f3f3",
@@ -17,7 +19,19 @@ const downCircleStyle = {
 
 const ProfileDropdown = () => {
   const navigate = useNavigate();
-  const { user, logoutAction, deleteAccountAction } = useAuth();
+  const { user, logoutAction } = useAuth();
+
+  const deleteAccountAction = () => {
+    Modal.confirm({
+      width: 500,
+      title: "Are you sure you want to delete your account?",
+      content: "This action cannot be undone.",
+      onOk: () =>
+        UserService.deleteUser(user.email)
+          .then(logoutAction)
+          .catch(genericNetworkError),
+    });
+  };
 
   const items = [
     {
@@ -33,7 +47,7 @@ const ProfileDropdown = () => {
     },
     {
       key: "delete-account",
-      label: "Delete Account",
+      label: "Delete User",
       icon: <UserDeleteOutlined />,
       onClick: deleteAccountAction,
     },
