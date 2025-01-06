@@ -11,8 +11,10 @@ const ProtectedRoutes = () => {
 
   // Checks if the user is authenticated
   useEffect(() => {
-    AuthService.test().catch(genericNetworkError);
-  }, []);
+    if (user) {
+      AuthService.test().catch(genericNetworkError);
+    }
+  }, [user]);
 
   if (loading) {
     return (

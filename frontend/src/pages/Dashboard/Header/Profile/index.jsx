@@ -1,4 +1,3 @@
-import React from "react";
 import { Dropdown, Modal } from "antd";
 import {
   DownCircleFilled,
@@ -43,7 +42,7 @@ const ProfileDropdown = () => {
       key: "change-password",
       label: "Change Password",
       icon: <LockOutlined />,
-      onClick: () => navigate("/profile/change-password"),
+      onClick: () => navigate("/change-password"),
     },
     {
       key: "delete-account",

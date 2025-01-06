@@ -26,7 +26,7 @@ const AppRoutes = () => {
         <Route path="/register" element={<Register />} />;
       </Route>
       <Route element={<ProtectedRoutes />}>
-        <Route path="/profile/change-password" element={<ChangePassword />} />
+        <Route path="/change-password" element={<ChangePassword />} />
         <Route path="/" element={<Dashboard />}>
           {DashboardRoutes()}
         </Route>
