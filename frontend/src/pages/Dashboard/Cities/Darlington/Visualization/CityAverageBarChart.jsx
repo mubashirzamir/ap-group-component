@@ -4,7 +4,7 @@ import { Alert, Card } from "antd";
 import { COLORS } from "@/helpers/constants.jsx";
 import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 
-const ProviderAverageBarChart = ({ pData, data, loading, errored }) => {
+const CityAverageBarChart = ({ data, loading, errored }) => {
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -69,38 +69,29 @@ const ProviderAverageBarChart = ({ pData, data, loading, errored }) => {
     },
   };
 
-    const deriveChartData = (data) => {
-      if (!data || data.length === 0) {
-        return { labels: [], datasets: [] };
-      }
+  const chartData = useMemo(() => {
+    if (!data || data.length === 0) {
+      return { labels: [], datasets: [] };
+    }
 
-      const providersMap = pData?.reduce((acc, provider) => {
-        acc[provider.id] = provider.companyName;
-        return acc;
-      }, {});
+    // Sort months numerically
+    const months = Array.from(new Set(data.map((item) => item.month))).sort((a, b) => a - b);
 
-      // Sort months numerically
-      const months = Array.from(new Set(data.map((item) => item.month))).sort((a, b) => a - b);
-      const providers = Array.from(new Set(data.map((item) => item.providerId))).sort();
-
-      const datasets = providers.map((providerId, index) => ({
-        label: providersMap?.[providerId] || `Unknown (${providerId})`,
-        data: months.map((month) => {
-          const record = data.find((item) => item.providerId === providerId && item.month === month);
-          return record ? record.averageConsumption : 0;
-        }),
-        backgroundColor: COLORS[index % COLORS.length],
-        borderColor: COLORS[index % COLORS.length],
-      }));
-
-      return {
-        labels: months.map((month) => `Month ${month}`),
-        datasets,
-      };
+    const dataset = {
+      label: "City Average Consumption",
+      data: months.map((month) => {
+        const record = data.find((item) => item.month === month);
+        return record ? record.averageConsumption : 0;
+      }),
+      backgroundColor: "#28a745",
+      borderColor: "#28a745",
     };
 
-
-  const chartData = useMemo(() => deriveChartData(data), [data, pData]);
+    return {
+      labels: months.map((month) => `Month ${month}`),
+      datasets: [dataset],
+    };
+  }, [data]);
 
   return (
     <DataWrapper data={data} loading={loading} errored={errored} strategy="spin">
@@ -113,7 +104,7 @@ const ProviderAverageBarChart = ({ pData, data, loading, errored }) => {
         }}
       >
         <div style={{ padding: "10px 20px", fontSize: "20px", fontWeight: "bold", color: "#4A90E2" }}>
-          Monthly Average Consumption per Provider
+          Monthly Average Consumption for the City
         </div>
         {chartData.labels.length === 0 ? (
           <div style={{ height: "200px", display: "flex", alignItems: "center", justifyContent: "center" }}>
@@ -128,7 +119,7 @@ const ProviderAverageBarChart = ({ pData, data, loading, errored }) => {
             >
               <Alert
                 message="No Data"
-                description="No providers consumption data available for the selected year."
+                description="No consumption data available for the selected year."
                 type="info"
                 showIcon
               />
@@ -147,7 +138,7 @@ const ProviderAverageBarChart = ({ pData, data, loading, errored }) => {
                     padding: "10px",
                     borderRadius: "5px",
                     marginBottom: "10px",
-                    background: `linear-gradient(135deg, ${COLORS[index % COLORS.length]} 50%, #f5f5f5 50%)`,
+                    background: `linear-gradient(135deg, #28a745 50%, #f5f5f5 50%)`, // Changed color to green
                     color: "#333",
                     fontSize: "14px",
                   }}
@@ -155,7 +146,13 @@ const ProviderAverageBarChart = ({ pData, data, loading, errored }) => {
                   <strong>{dataset.label}</strong>
                   <ul style={{ paddingLeft: "20px" }}>
                     {dataset.data.map((value, idx) => (
-                      <li key={`${index}-${idx}`} style={{ margin: "5px 0" }}>
+                      <li
+                        key={`${index}-${idx}`}
+                        style={{
+                          margin: "5px 0",
+                          color: "#333", // Ensure text inside the list is readable
+                        }}
+                      >
                         {chartData.labels[idx]}: <strong>{value.toFixed(2)} kWh</strong>
                       </li>
                     ))}
@@ -170,4 +167,4 @@ const ProviderAverageBarChart = ({ pData, data, loading, errored }) => {
   );
 };
 
-export default ProviderAverageBarChart;
+export default CityAverageBarChart;
