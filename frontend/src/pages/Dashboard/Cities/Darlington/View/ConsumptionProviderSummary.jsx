@@ -16,7 +16,6 @@ const ConsumptionProviderSummary = (providerTime) => {
 
         try {
         const providerResponse = await DarlingtonService.getAggregatedByProvider(providerTime);
-        console.log('providerResponse',providerResponse)
         setCProviderInformation(providerResponse);
         } catch (error) {
         setCProviderError(true);

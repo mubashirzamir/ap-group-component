@@ -3,7 +3,7 @@ import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 
 const tableProps = {
   scroll: { x: "max-content" },
-  pagination: { pageSize: 5 }, // Set page size to 10
+  pagination: { pageSize: 5 },
 };
 
 const providerColumns = [
@@ -24,7 +24,7 @@ const providerColumns = [
     key: "totalConsumption",
     render: (value) => `${value.toFixed(2)} kWh`,
   },
-  // Add more columns if needed
+
 ];
 
 const ConsumptionProviderTable = ({ data, loading, errored }) => (
