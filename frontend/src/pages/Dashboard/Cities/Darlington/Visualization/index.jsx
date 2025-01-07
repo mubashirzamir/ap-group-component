@@ -6,6 +6,8 @@ import YearSelector from "@/pages/Dashboard/Cities/Darlington/Visualization/Year
 import ProviderAverageBarChart from "@/pages/Dashboard/Cities/Darlington/Visualization/ProviderAverageBarChart.jsx";
 import CityAverageResult from "@/pages/Dashboard/Cities/Darlington/Visualization/CityAverageResult.jsx";
 import CityAverageBarChart from "@/pages/Dashboard/Cities/Darlington/Visualization/CityAverageBarChart.jsx";
+import EPCPResult from "@/pages/Dashboard/Cities/Darlington/Visualization/EPCPResult.jsx";
+import EPCPInformationBarChart from "@/pages/Dashboard/Cities/Darlington/Visualization/EPCPInformationBarChart.jsx";
 
 const Visualization = () => {
   // State to manage the selected Year period for provider data
@@ -17,8 +19,10 @@ const Visualization = () => {
   const { providerInformation, providerInfoLoading, providerInfoError } = ProviderAverageResult(providerYear);
 
   const {cityInformation, cityInfoLoading, cityInfoError}=CityAverageResult(cityYear);
+  const { EPCPInformation, EPCPLoading, EPCPError } = EPCPResult();
   return (
     <DashboardPage breadcrumbs={[{ title: "Darlington" }, { title: "Visualization" }]}>
+    <EPCPInformationBarChart pData={providerData} data={EPCPInformation} loading={EPCPLoading} error={EPCPError} />
     {/* Selector for choosing the Year period for provider data */}
     <YearSelector selectedYear={providerYear} onChange={setProviderYear} />
     {/* Table displaying provider data */}
