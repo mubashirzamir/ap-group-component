@@ -4,7 +4,18 @@ import { Card, Alert } from "antd";
 import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 import { COLORS } from "@/helpers/constants.jsx";
 
-const EPCPInformationLineChart = ({ pData, data, loading, errored }) => {
+/**
+ * Component to display a line chart of peak hourly consumption by provider.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} props.pData - The provider data.
+ * @param {Array} props.data - The consumption data.
+ * @param {boolean} props.loading - The loading state of the data.
+ * @param {boolean} props.error - The error state of the data.
+ * @returns {JSX.Element} The rendered line chart component.
+ */
+const EPCPInformationLineChart = ({ pData, data, loading, error }) => {
+  // Chart options configuration
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -57,6 +68,7 @@ const EPCPInformationLineChart = ({ pData, data, loading, errored }) => {
     },
   };
 
+  // Memoized chart data to avoid unnecessary recalculations
   const chartData = useMemo(() => {
     if (!data || !pData) return { labels: [], datasets: [] };
 
@@ -109,7 +121,7 @@ const EPCPInformationLineChart = ({ pData, data, loading, errored }) => {
   }, [data, pData]);
 
   return (
-    <DataWrapper data={data} loading={loading} errored={errored} strategy="spin">
+    <DataWrapper data={data} loading={loading} error={error} strategy="spin">
       <Card
         style={{
           marginTop: 20,

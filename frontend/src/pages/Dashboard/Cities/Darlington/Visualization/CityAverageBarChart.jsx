@@ -4,7 +4,17 @@ import { Alert, Card } from "antd";
 import { COLORS } from "@/helpers/constants.jsx";
 import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 
+/**
+ * Component to display a bar chart of the city's average consumption data.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} props.data - The data to display in the chart.
+ * @param {boolean} props.loading - The loading state of the data.
+ * @param {boolean} props.errored - The error state of the data.
+ * @returns {JSX.Element} The rendered bar chart component.
+ */
 const CityAverageBarChart = ({ data, loading, errored }) => {
+  // Chart options configuration
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -69,6 +79,7 @@ const CityAverageBarChart = ({ data, loading, errored }) => {
     },
   };
 
+  // Memoized chart data to avoid unnecessary recalculations
   const chartData = useMemo(() => {
     if (!data || data.length === 0) {
       return { labels: [], datasets: [] };

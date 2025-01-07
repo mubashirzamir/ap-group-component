@@ -4,7 +4,18 @@ import { Alert, Card } from "antd";
 import { COLORS } from "@/helpers/constants.jsx";
 import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 
+/**
+ * Component to display a bar chart of the average consumption per provider.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} props.pData - The provider data.
+ * @param {Array} props.data - The consumption data.
+ * @param {boolean} props.loading - The loading state of the data.
+ * @param {boolean} props.errored - The error state of the data.
+ * @returns {JSX.Element} The rendered bar chart component.
+ */
 const ProviderAverageBarChart = ({ pData, data, loading, errored }) => {
+  // Chart options configuration
   const chartOptions = {
     responsive: true,
     maintainAspectRatio: false,
@@ -69,37 +80,43 @@ const ProviderAverageBarChart = ({ pData, data, loading, errored }) => {
     },
   };
 
-    const deriveChartData = (data) => {
-      if (!data || data.length === 0) {
-        return { labels: [], datasets: [] };
-      }
+  /**
+   * Derives chart data from the provided data.
+   *
+   * @param {Array} data - The consumption data.
+   * @returns {Object} The chart data.
+   */
+  const deriveChartData = (data) => {
+    if (!data || data.length === 0) {
+      return { labels: [], datasets: [] };
+    }
 
-      const providersMap = pData?.reduce((acc, provider) => {
-        acc[provider.id] = provider.companyName;
-        return acc;
-      }, {});
+    const providersMap = pData?.reduce((acc, provider) => {
+      acc[provider.id] = provider.companyName;
+      return acc;
+    }, {});
 
-      // Sort months numerically
-      const months = Array.from(new Set(data.map((item) => item.month))).sort((a, b) => a - b);
-      const providers = Array.from(new Set(data.map((item) => item.providerId))).sort();
+    // Sort months numerically
+    const months = Array.from(new Set(data.map((item) => item.month))).sort((a, b) => a - b);
+    const providers = Array.from(new Set(data.map((item) => item.providerId))).sort();
 
-      const datasets = providers.map((providerId, index) => ({
-        label: providersMap?.[providerId] || `Unknown (${providerId})`,
-        data: months.map((month) => {
-          const record = data.find((item) => item.providerId === providerId && item.month === month);
-          return record ? record.averageConsumption : 0;
-        }),
-        backgroundColor: COLORS[index % COLORS.length],
-        borderColor: COLORS[index % COLORS.length],
-      }));
+    const datasets = providers.map((providerId, index) => ({
+      label: providersMap?.[providerId] || `Unknown (${providerId})`,
+      data: months.map((month) => {
+        const record = data.find((item) => item.providerId === providerId && item.month === month);
+        return record ? record.averageConsumption : 0;
+      }),
+      backgroundColor: COLORS[index % COLORS.length],
+      borderColor: COLORS[index % COLORS.length],
+    }));
 
-      return {
-        labels: months.map((month) => `Month ${month}`),
-        datasets,
-      };
+    return {
+      labels: months.map((month) => `Month ${month}`),
+      datasets,
     };
+  };
 
-
+  // Memoized chart data to avoid unnecessary recalculations
   const chartData = useMemo(() => deriveChartData(data), [data, pData]);
 
   return (
