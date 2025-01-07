@@ -1,11 +1,9 @@
 import DashboardPage from "@/components/DashboardPage/index.jsx";
 import { useEffect, useState } from "react";
 import { Line } from "react-chartjs-2";
-import NewcastleService from "@/services/NewcastleService.jsx";
-import { genericNetworkError, randomColor } from "@/helpers/utils.jsx";
 import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 import { DatePicker } from "antd";
-import { REFRESH_INTERVAl_NEWCASTLE } from "@/helpers/constants.jsx";
+import { REFRESH_INTERVAl_OVERVIEW } from "@/helpers/constants.jsx";
 import {
   CategoryScale,
   Chart as ChartJS,
@@ -16,6 +14,9 @@ import {
   Tooltip,
 } from "chart.js";
 import dayjs from "dayjs";
+import NewcastleService from "@/services/NewcastleService.jsx";
+import SunderlandService from "@/services/SunderlandService.jsx";
+import ServiceStatusPopover from "@/pages/Dashboard/Overview/ServiceStatusPopover.jsx";
 
 // Register Chart.js components
 ChartJS.register(
@@ -31,7 +32,7 @@ const chartOptions = {
   plugins: {
     title: {
       display: true,
-      text: "Monthly Average Consumption per Provider",
+      text: "Monthly Average Consumption By City",
     },
     tooltip: {
       mode: "index",
@@ -56,89 +57,110 @@ const chartOptions = {
 
 const Visualization = () => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState([]);
+  const [data, setData] = useState(null);
   const [errored, setErrored] = useState(false);
+  const [alertMessages, setAlertMessages] = useState([]);
   const [date, setDate] = useState(dayjs());
 
-  const fetchData = () => {
-    setLoading(true);
-    NewcastleService.monthlyAverageProviders({ year: date.clone().year() })
-      .then((response) => setData(response))
-      .catch((e) => {
-        setErrored(true);
-        genericNetworkError(e);
-      })
-      .finally(() => setLoading(false));
-  };
-
   useEffect(() => {
-    // Initial fetch on mount
+    const fetchData = async () => {
+      setLoading(true);
+      const year = date.clone().year();
+      let newcastleData = [];
+      let sunderlandData = [];
+      let messages = [];
+
+      try {
+        newcastleData = await NewcastleService.monthlyAverageCity({ year });
+        messages.push("Newcastle: ✅");
+      } catch (error) {
+        messages.push("Newcastle: ❌");
+      }
+
+      try {
+        sunderlandData =
+          await SunderlandService.getMonthlyAverageConsumptionForCity(year);
+        messages.push("Sunderland: ✅");
+      } catch (error) {
+        messages.push("Sunderland: ❌");
+      }
+
+      setAlertMessages(messages);
+      setData(mergeData(newcastleData, sunderlandData));
+      setLoading(false);
+    };
+
     fetchData();
 
     const intervalId = setInterval(() => {
       fetchData();
-    }, REFRESH_INTERVAl_NEWCASTLE);
+    }, REFRESH_INTERVAl_OVERVIEW);
 
-    // Cleanup: Clear interval on unmount to prevent memory leaks
     return () => clearInterval(intervalId);
-  }, [date]); // Include year as a dependency to fetch data when year changes
+  }, [date]);
 
   const onDateChange = (date) => setDate(date);
 
   return (
     <DashboardPage
-      breadcrumbs={[{ title: "Newcastle" }, { title: "Visualization" }]}
+      breadcrumbs={[{ title: "Overview" }, { title: "Visualization" }]}
     >
-      <div className="flex justify-end p-4">
+      <div className="flex justify-end p-4 space-x-4">
         <DatePicker
           disabled={loading}
           value={date}
           onChange={onDateChange}
           picker="year"
         />
+        <ServiceStatusPopover alertMessages={alertMessages} loading={loading} />
       </div>
       <DataWrapper data={data} loading={loading} errored={errored}>
-        <MonthlyConsumptionChart data={data} />
+        {data && <MonthlyConsumptionChart data={data} />}
       </DataWrapper>
     </DashboardPage>
   );
 };
 
-export default Visualization;
-
 const MonthlyConsumptionChart = ({ data }) => {
-  return <Line data={makeChartData(data)} options={chartOptions} />;
+  return <Line data={data} options={chartOptions} />;
 };
 
-const makeChartData = (data) => {
-  const providers = ["A", "B", "C"];
+// Merges the data for Newcastle and Sunderland, filling in missing months with zero consumption
+const mergeData = (newcastleData, sunderlandData) => {
   const months = Array.from({ length: 12 }, (_, index) => index + 1);
 
-  // Initialize chart datasets
-  const datasets = providers.map((provider) => {
-    const providerData = data.filter((item) => {
-      // Map providerId to provider letter
-      const providerMap = { 1: "A", 2: "B", 3: "C" };
-      return providerMap[item.providerId] === provider;
-    });
+  // Initialize the consumption arrays for both cities with 0s for all 12 months
+  const newcastleConsumption = new Array(12).fill(0);
+  const sunderlandConsumption = new Array(12).fill(0);
 
-    // Create an array for each month
-    const monthlyConsumption = months.map((month) => {
-      const monthData = providerData.find((item) => item.month === month);
-      return monthData ? monthData.averageConsumption : 0; // Default to 0 if no data for that month
-    });
+  // Map the consumption data from the response to the correct month
+  newcastleData.forEach((data) => {
+    newcastleConsumption[data.month - 1] = data.averageConsumption;
+  });
 
-    return {
-      label: provider,
-      data: monthlyConsumption,
-      borderColor: randomColor(), // Random color for each provider
-      fill: false, // No fill under the line
-      tension: 0.1,
-    };
+  sunderlandData.forEach((data) => {
+    sunderlandConsumption[data.month - 1] = data.averageConsumption;
   });
 
   return {
     labels: months,
-    datasets: datasets,
+    datasets: [
+      {
+        label: "Newcastle",
+        data: newcastleConsumption,
+        borderColor: "#3366CC",
+        backgroundColor: "#3366CC",
+        fill: false,
+      },
+      {
+        label: "Sunderland",
+        data: sunderlandConsumption,
+        borderColor: "#DC3912",
+        backgroundColor: "#DC3912",
+        fill: false,
+      },
+    ],
   };
 };
+
+export default Visualization;
