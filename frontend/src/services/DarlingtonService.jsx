@@ -9,10 +9,10 @@ const SmartCityService = {
    * @param {string} providerId - The ID of the provider.
    * @returns {Promise<Array>} - A promise that resolves to a list of summaries.
    */
-  saveAllElectricalProviderSummary: async (providerId) => {
+  viewIndividualProviderSummary: async (providerId) => {
     try {
-      const response = await request.post(
-        `${API_BASE_URL}/electricalProvider/${providerId}/allSummary`
+      const response = await request.get(
+        `${API_BASE_URL}/electricalProvider/${providerId}/summary`
       );
       return response;
     } catch (error) {

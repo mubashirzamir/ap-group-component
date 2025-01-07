@@ -3,14 +3,14 @@ import { Select } from "antd";
 const { Option } = Select;
 
 const ProviderSelector = ({ selectedProvider, data, onChange }) => (
-  <div style={{ marginBottom: 20, display: "flex", justifyContent: "flex-end" }}>
+  <div style={{ marginTop:20, marginBottom: 10, display: "flex", justifyContent: "flex-end" }}>
     <Select
       value={selectedProvider}
       onChange={onChange}
       style={{ width: 200 }}
     >
       {/* Default Option for "All" */}
-      <Option key="all" value="all">
+      <Option key="All" value="All">
         All
       </Option>
       {/* Dynamic Options from providerData */}
