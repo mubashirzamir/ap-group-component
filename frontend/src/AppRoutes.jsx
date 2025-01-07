@@ -14,6 +14,8 @@ import ProtectedRoutes from "@/helpers/Auth/ProtectedRoutes.jsx";
 import Login from "@/pages/Login/index.jsx";
 import Dashboard from "@/pages/Dashboard/index.jsx";
 import Home from "@/pages/Dashboard/Home/index.jsx";
+import OverviewView from "@/pages/Dashboard/Overview/View/index.jsx";
+import OverviewVisualization from "@/pages/Dashboard/Overview/Visualization/index.jsx";
 import AuthRoutes from "@/helpers/Auth/AuthRoutes.jsx";
 import Register from "@/pages/Register/index.jsx";
 import ChangePassword from "@/pages/ChangePassword/index.jsx";
@@ -40,6 +42,12 @@ const DashboardRoutes = () => {
   return (
     <>
       <Route path="/" element={<Home />} />
+
+      <Route path="/overview/view" element={<OverviewView />} />
+      <Route
+        path="/overview/visualization"
+        element={<OverviewVisualization />}
+      />
 
       <Route path="darlington/view" element={<DarlingtonView />} />
       <Route

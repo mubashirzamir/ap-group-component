@@ -22,10 +22,28 @@ const monthlyAverageCity = (params = {}) => {
   return request.get(`${baseUrl}/graphs/monthly-average/city`, { params });
 };
 
+const dataByProviderForOverview = (params = {}) => {
+  return request.get(`${baseUrl}/data/providers`, { params }).then((res) => {
+    return res.map((item) => {
+      return {
+        ...item,
+        providerId: providerIdMap[item.providerId],
+      };
+    });
+  });
+};
+
+const providerIdMap = {
+  1: "a",
+  2: "b",
+  3: "c",
+};
+
 export default {
   cityConsumptions,
   dataByProvider,
   dataForCity,
   monthlyAverageProviders,
   monthlyAverageCity,
+  dataByProviderForOverview,
 };

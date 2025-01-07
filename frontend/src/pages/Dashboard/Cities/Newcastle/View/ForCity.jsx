@@ -8,7 +8,7 @@ import { REFRESH_INTERVAl_NEWCASTLE } from "@/helpers/constants.jsx";
 
 const { Meta } = Card;
 
-const ByProvider = () => {
+const ForCity = () => {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const [errored, setErrored] = useState(null);
@@ -72,4 +72,4 @@ const ByProvider = () => {
   );
 };
 
-export default ByProvider;
+export default ForCity;
