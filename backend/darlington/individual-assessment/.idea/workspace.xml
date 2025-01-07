@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="da413fa1-dd4f-4764-9e34-fcff36cf14bc" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/SmartCity/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/apiGateway/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/citizen/Dockerfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/electricalProvider/Dockerfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/example/apiGateway/routes/Routes.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/example/apiGateway/routes/Routes.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/citizen/.mongodb/mongosh/677694e71e4dc33f9afe6910_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/citizen/.mongodb/mongosh/677694e990d5f8ec1cfe6910_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/citizen/WiredTiger" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/citizen/WiredTiger.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/citizen/WiredTiger.turtle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/citizen/mongod.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/electricalProvider/.mongodb/mongosh/677694e766df4e4265fe6910_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/electricalProvider/.mongodb/mongosh/677694e93fa8c0e461fe6910_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/electricalProvider/WiredTiger" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/electricalProvider/WiredTiger.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/electricalProvider/WiredTiger.turtle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/electricalProvider/mongod.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/smartCity/.mongodb/mongosh/677694e7282d893273fe6910_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/smartCity/.mongodb/mongosh/677694e9b7d48cffc3fe6910_log" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/smartCity/WiredTiger" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/smartCity/WiredTiger.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/smartCity/WiredTiger.turtle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/smartCity/mongod.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/controller/ElectricalProviderInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/controller/ElectricalProviderInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/controller/SmartMeterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/controller/SmartMeterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/service/ElectricalProviderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/service/ElectricalProviderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/service/SmartMeterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/service/SmartMeterService.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="TaskManager">
+    <servers />
+  </component>
+</project>
