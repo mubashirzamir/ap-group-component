@@ -36,7 +36,7 @@ public class Routes {
                         .path("/api/smartCity/**")
                         .uri("http://city:9088"))
                 .route("fallbackRoute", r -> r
-                        .path("/fallbackRoute")
+                        .path("/fallba ckRoute")
                         .filters(f -> f.setPath("/fallbackRoute"))
                         .uri("forward:/fallbackRoute"))
                 .build();

@@ -11,6 +11,7 @@
       <change afterPath="$PROJECT_DIR$/electricalProvider/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/example/apiGateway/routes/Routes.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/example/apiGateway/routes/Routes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/citizen/.mongodb/mongosh/677694e71e4dc33f9afe6910_log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/citizen/.mongodb/mongosh/677694e990d5f8ec1cfe6910_log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/citizen/WiredTiger" beforeDir="false" />
@@ -80,6 +81,10 @@
     "Application.ApiGatewayApplication.executor": "Run",
     "JUnit.ApiGatewayApplicationTests.executor": "Run",
     "Maven.apiGateway [clean,install].executor": "Run",
+    "Maven.apiGateway [clean].executor": "Run",
+    "Maven.citizen [clean,install].executor": "Run",
+    "Maven.electricalProvider [clean,install].executor": "Run",
+    "Maven.smartCity [clean,install].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -102,6 +107,7 @@
   </component>
   <component name="RunAnythingCache">
     <option name="myCommands">
+      <command value="mvn clean" />
       <command value="mvn clean install" />
     </option>
   </component>

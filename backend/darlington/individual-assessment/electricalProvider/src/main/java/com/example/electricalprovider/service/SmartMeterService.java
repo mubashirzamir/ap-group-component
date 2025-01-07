@@ -207,18 +207,17 @@ public class SmartMeterService {
         List<UserModel> userData = new ArrayList<>();
         Random random = new Random();
         String[] providerIds = {"507f1f77bcf86cd799439010", "507f1f77bcf86cd799439011", "507f1f77bcf86cd799439012"};
-        int customersPerProvider = 100;
+        int customersPerProvider = 50;
         int months = 6;
-        int dataPerMonth = 100;
+        int dataPerMonth = 50;
 
         for (String providerId : providerIds) {
             for (int customerIndex = 1; customerIndex <= customersPerProvider; customerIndex++) {
                 String customerId = "customer" + customerIndex;
-                // Create and save UserModel
                 UserModel user = new UserModel();
                 user.setId(UUID.randomUUID().toString());
                 user.setProviderId(providerId);
-                user.setDatabaseNo(random.nextInt(100)); // Example database number
+                user.setDatabaseNo(random.nextInt(100));
                 user.setName("Customer " + customerIndex);
                 user.setEmail("customer" + customerIndex + "@example.com");
                 user.setPhone("123-456-789" + customerIndex);
@@ -232,12 +231,15 @@ public class SmartMeterService {
                 for (int month = 0; month < months; month++) {
                     LocalDateTime startOfMonth = LocalDateTime.now().minusMonths(month).withDayOfMonth(1).truncatedTo(ChronoUnit.DAYS);
                     LocalDateTime endOfMonth = startOfMonth.plusMonths(1).minusSeconds(1);
-                    for (int i = 0; i < dataPerMonth / (customersPerProvider * months); i++) {
+                    int iterations = (int) Math.ceil((double) dataPerMonth / (customersPerProvider * months));
+                    System.out.println("Generating for provider: " + providerId + " Month: " + startOfMonth.getMonth());
+
+                    for (int i = 0; i < iterations; i++) {
                         smartMeterModel dataEntry = new smartMeterModel();
                         dataEntry.setId(UUID.randomUUID().toString());
                         dataEntry.setProviderId(providerId);
                         dataEntry.setCustomerId(customerId);
-                        dataEntry.setCurrentConsumption(50 + (150 * random.nextDouble())); // Random consumption between 50 and 200 kWh
+                        dataEntry.setCurrentConsumption(50 + (150 * random.nextDouble()));
                         dataEntry.setReadingTimestamp(randomDateTimeBetween(startOfMonth, endOfMonth, random));
                         dataEntry.setAutomatedEntryMethod(random.nextBoolean());
                         dataEntry.setAlertFlag(random.nextBoolean());
@@ -247,10 +249,13 @@ public class SmartMeterService {
             }
         }
 
-        // Save the test data
+        System.out.println("Total smart meter entries: " + testData.size());
+        System.out.println("Total user entries: " + userData.size());
+
         smartMeterRepository.saveAll(testData);
         UserRepository.saveAll(userData);
     }
+
 
     private LocalDateTime randomDateTimeBetween(LocalDateTime start, LocalDateTime end, Random random) {
         long startEpoch = start.toEpochSecond(ZoneOffset.UTC);

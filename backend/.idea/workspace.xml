@@ -11,6 +11,7 @@
       <change afterPath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/darlington/individual-assessment/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/darlington/individual-assessment/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/darlington/individual-assessment/apiGateway/src/main/java/com/example/apiGateway/routes/Routes.java" beforeDir="false" afterPath="$PROJECT_DIR$/darlington/individual-assessment/apiGateway/src/main/java/com/example/apiGateway/routes/Routes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/darlington/individual-assessment/data/citizen/.mongodb/mongosh/677694e71e4dc33f9afe6910_log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/darlington/individual-assessment/data/citizen/.mongodb/mongosh/677694e990d5f8ec1cfe6910_log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/darlington/individual-assessment/data/citizen/WiredTiger" beforeDir="false" />
@@ -88,6 +89,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "Application.ApiGatewayApplication.executor": "Run",
     "Application.CityApplication.executor": "Run",
     "Application.MasterGatewayApplication.executor": "Run",
     "Application.SmartCityApplication.executor": "Run",
