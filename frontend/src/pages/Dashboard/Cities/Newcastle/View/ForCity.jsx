@@ -14,21 +14,20 @@ const ForCity = () => {
   const [errored, setErrored] = useState(null);
   const [timeRange, setTimeRange] = useState("LAST_30_DAYS");
 
-  const fetchData = () => {
-    setLoading(true);
-    NewcastleService.dataForCity({ timeRange })
-      .then((response) => setData(response))
-      .catch((e) => {
-        setErrored(true);
-        genericNetworkError(e);
-      })
-      .finally(() => setLoading(false));
-  };
-
   useEffect(() => {
+    const fetchData = () => {
+      setLoading(true);
+      NewcastleService.dataForCity({ timeRange })
+          .then((response) => setData(response))
+          .catch((e) => {
+            setErrored(true);
+            genericNetworkError(e);
+          })
+          .finally(() => setLoading(false));
+    };
+
     // Initial fetch on mount
     fetchData();
-
     
     const intervalId = setInterval(() => {
       fetchData();

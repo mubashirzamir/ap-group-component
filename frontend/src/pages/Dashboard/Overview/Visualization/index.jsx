@@ -57,8 +57,10 @@ const chartOptions = {
 
 const Visualization = () => {
   const [loading, setLoading] = useState(false);
-  const [data, setData] = useState(null);
-  const [errored, setErrored] = useState(false);
+  const [data, setData] = useState({
+    labels: [],
+    datasets: [],
+  });
   const [alertMessages, setAlertMessages] = useState([]);
   const [date, setDate] = useState(dayjs());
 
@@ -114,8 +116,8 @@ const Visualization = () => {
         />
         <ServiceStatusPopover alertMessages={alertMessages} loading={loading} />
       </div>
-      <DataWrapper data={data} loading={loading} errored={errored}>
-        {data && <MonthlyConsumptionChart data={data} />}
+      <DataWrapper data={data} loading={loading} errored={false}>
+        <MonthlyConsumptionChart data={data} />
       </DataWrapper>
     </DashboardPage>
   );

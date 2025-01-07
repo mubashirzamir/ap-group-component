@@ -1,4 +1,5 @@
 import { Select } from "antd";
+import PropTypes from "prop-types";
 
 const timeRangeOptions = [
   { value: "LAST_24_HOURS", label: "Last 24 Hours" },
@@ -21,6 +22,12 @@ const TimeRangeFilter = ({ timeRange, setTimeRange, loading }) => {
       onChange={(value) => setTimeRange(value)}
     />
   );
+};
+
+TimeRangeFilter.propTypes = {
+  timeRange: PropTypes.string.isRequired,
+  setTimeRange: PropTypes.func.isRequired,
+  loading: PropTypes.bool.isRequired,
 };
 
 export default TimeRangeFilter;
