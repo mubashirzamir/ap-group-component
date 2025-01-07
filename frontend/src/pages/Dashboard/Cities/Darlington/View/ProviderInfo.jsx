@@ -1,7 +1,7 @@
 // src/hooks/useAggregatedData.jsx
 
 import { useEffect, useState } from "react";
-import SunderlandService from "@/services/SunderlandService.jsx";
+import DarlingtonService from "@/services/DarlingtonService.jsx";
 import { genericNetworkError } from "@/helpers/utils.jsx";
 import { REFRESH_INTERVAL_DARLINGTON } from "@/helpers/constants.jsx";
 
@@ -18,7 +18,7 @@ const ProviderInfo = () => {
       setProviderLoading(true);
 
       try {
-        const providerResponse = await SunderlandService.getProviderInfo();
+        const providerResponse = await DarlingtonService.getProviderInfo();
         setProviderData(providerResponse);
       } catch (error) {
         setProviderErrored(true);

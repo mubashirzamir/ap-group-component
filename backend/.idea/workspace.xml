@@ -93,6 +93,8 @@
       <change beforePath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/src/test/java/com/example/electricalprovider/ElectricalProviderApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/src/test/java/com/example/electricalprovider/ElectricalProviderApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/src/test/java/com/example/electricalprovider/TestElectricalProviderApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/src/test/java/com/example/electricalprovider/TestElectricalProviderApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/src/test/java/com/example/electricalprovider/TestcontainersConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/src/test/java/com/example/electricalprovider/TestcontainersConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master_gateway/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/master_gateway/src/main/resources/application-dev.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/master_gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/master_gateway/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,8 +186,10 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.ApiGatewayApplication">
+  <component name="RunManager" selected="Application.MasterGatewayApplication">
     <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-19" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.example.apiGateway.ApiGatewayApplication" />
       <extension name="coverage">
         <pattern>
@@ -238,8 +242,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ApiGatewayApplication" />
         <item itemvalue="Application.MasterGatewayApplication" />
+        <item itemvalue="Application.ApiGatewayApplication" />
         <item itemvalue="Application.SmartCityApplication" />
         <item itemvalue="Application.CityApplication" />
       </list>

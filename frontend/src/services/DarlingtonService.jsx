@@ -1,6 +1,6 @@
 import request from "@/request.js";
 
-const API_BASE_URL = import.meta.env.VITE_DARLINGTON_API_BASE_URL + "/api";
+const API_BASE_URL = import.meta.env.VITE_DARLINGTON_API_BASE_URL + "/api/smartCity";
 
 const SmartCityService = {
   /**

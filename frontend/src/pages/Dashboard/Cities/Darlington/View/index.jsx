@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import request from "@/request.js";
 import { genericNetworkError } from "@/helpers/utils.jsx";
 import ProviderInfo from "@/pages/Dashboard/Cities/Darlington/View/ProviderInfo.jsx";
+import ProviderSelector from "@/pages/Dashboard/Cities/Darlington/View/ProviderSelector.jsx";
 
 const columns = [
   {
@@ -41,10 +42,13 @@ const View = () => {
   }, []);
   const [providerTime, setProviderTime] = useState("LAST_30_DAYS");
   const [cityTime, setcityTime] = useState("LAST_30_DAYS");
-  const [providerData, providerLoading, providerErrored] = ProviderInfo();
+  const [ProviderChoice,setProviderChoice] = useState("All");
+  const {providerData, providerLoading, providerErrored} = ProviderInfo();
   console.log('providerData', providerData);
   return (
     <DashboardPage breadcrumbs={[{ title: "Darlington" }, { title: "View" }]}>
+    <ProviderInfoPage data={providerData} loading={providerLoading} errored={providerErrored} />
+    <ProviderSelector selectedProvider={ProviderChoice} data={providerData} onChange={setProviderChoice} />
       <Table
         dataSource={posts}
         columns={columns}
