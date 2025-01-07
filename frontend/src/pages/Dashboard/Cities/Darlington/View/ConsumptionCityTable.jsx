@@ -1,12 +1,13 @@
 import { Table } from "antd";
 import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 
+// Table properties
 const tableProps = {
   scroll: { x: "max-content" },
 };
 
 /**
- * Columns for the city consumption table.q
+ * Columns for the city consumption table
  */
 const cityColumns = [
   {
@@ -43,11 +44,7 @@ const ConsumptionCityTable = ({ data, loading, error }) => {
         {...tableProps}
         dataSource={normalizedData}
         columns={cityColumns}
-        rowKey={(record, index) =>
-          record.totalConsumption
-            ? `row-${record.totalConsumption}`
-            : `index-${index}`
-        } // Generate unique keys
+        rowKey={(record) => record.totalConsumption ? `row-${record.totalConsumption}` : `index-${Math.random()}`}
         loading={loading && normalizedData.length === 0}
         pagination={false}
         title={() => (

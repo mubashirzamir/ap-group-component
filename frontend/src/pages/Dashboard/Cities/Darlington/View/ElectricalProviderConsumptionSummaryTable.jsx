@@ -1,11 +1,14 @@
 import { Table } from "antd";
 import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 
+// Table properties
 const tableProps = {
   scroll: { x: "max-content" },
   pagination: { pageSize: 5 }, // Set page size to 10
 };
-
+/**
+ * Columns for the city consumption table
+ */
 const cityColumns = [
   {
     title: "Company Name",
@@ -55,11 +58,21 @@ const cityColumns = [
   },
 ];
 
+/**
+ * Component to display a table of electrical provider consumption summary data.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} props.providerData - The data of providers to match with consumption data.
+ * @param {Array} props.data - The consumption data to display in the table.
+ * @param {boolean} props.loading - The loading state of the data.
+ * @param {boolean} props.error - The error state of the data.
+ * @returns {JSX.Element} The rendered table component.
+ */
 const ElectricalProviderConsumptionSummaryTable = ({
   providerData,
   data,
   loading,
-  errored,
+  error,
 }) => {
   // Preprocess data to include companyName from providerData
   const enhancedData =
@@ -74,7 +87,7 @@ const ElectricalProviderConsumptionSummaryTable = ({
     }) || [];
 
   return (
-    <DataWrapper data={data} loading={loading} errored={errored} strategy="spin">
+    <DataWrapper data={data} loading={loading} error={error} strategy="spin">
       <Table
         {...tableProps}
         dataSource={enhancedData}

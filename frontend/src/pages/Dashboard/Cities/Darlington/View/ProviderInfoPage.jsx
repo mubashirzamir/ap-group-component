@@ -1,11 +1,15 @@
 import { Table } from "antd";
 import DataWrapper from "@/components/DataWrapper/DataWrapper.jsx";
 
+// Table properties
 const tableProps = {
   scroll: { x: "max-content" },
-  pagination: { pageSize: 50 },
+  pagination: { pageSize: 5 },
 };
 
+/**
+ * Columns for the Provider information
+ */
 const providerColumn = [
   {
     title: "Company Name",
@@ -34,6 +38,15 @@ const providerColumn = [
   },
 ];
 
+/**
+ * Component to display a table of provider information.
+ *
+ * @param {Object} props - The component props.
+ * @param {Array} props.data - The data to display in the table.
+ * @param {boolean} props.loading - The loading state of the data.
+ * @param {boolean} props.errored - The error state of the data.
+ * @returns {JSX.Element} The rendered table component.
+ */
 const ProviderInfoPage = ({ data, loading, errored }) => {
   // Ensure `data` is an array for the Table component
   const dataSource = Array.isArray(data) ? data : [data];

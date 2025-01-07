@@ -4,7 +4,7 @@ import { genericNetworkError } from "@/helpers/utils.jsx";
 import { REFRESH_INTERVAL_DARLINGTON } from "@/helpers/constants.jsx";
 
 /**
- * Custom hook to fetch and manage city consumption summary data.
+ * fetch and manage city consumption summary data.
  *
  * @param {string} providerTime - The selected time period for fetching data.
  * @returns {Object} An object containing city consumption information, loading state, and error state.

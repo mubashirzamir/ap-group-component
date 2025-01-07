@@ -38,11 +38,11 @@ const View = () => {
   return (
     <DashboardPage breadcrumbs={[{ title: "Darlington" }, { title: "View" }]}>
       {/* Display provider information */}
-      <ProviderInfoPage data={providerData} loading={providerLoading} errored={providerError} />
+      <ProviderInfoPage data={providerData} loading={providerLoading} providerError={providerError} />
       {/* Selector for choosing a provider */}
       <ProviderSelector selectedProvider={ProviderChoice} data={providerData} onChange={setProviderChoice} />
       {/* Table displaying electrical provider consumption summary */}
-      <ElectricalProviderConsumptionSummaryTable providerData={providerData} data={EPCPInformation} loading={EPCPLoading} errored={EPCPError} />
+      <ElectricalProviderConsumptionSummaryTable providerData={providerData} data={EPCPInformation} loading={EPCPLoading} providerError={EPCPError} />
       {/* Selector for choosing the time period for provider data */}
       <TimeSelector data={providerTime} onChange={setProviderTime} />
       {/* Table displaying consumption provider data */}

@@ -9,6 +9,14 @@ const TIME_RANGES = [
   { label: "Last 30 Days", value: "LAST_30_DAYS" },
 ];
 
+/**
+ * Used to select a time range from a dropdown list.
+ *
+ * @param {Object} props - The component props.
+ * @param {string} props.data - The currently selected time range.
+ * @param {Function} props.onChange - The function to call when the selected time range changes.
+ * @returns {JSX.Element} The rendered time selector component.
+ */
 const TimeSelector = ({ data, onChange }) => (
   <div style={{ marginTop:20, marginBottom: 20, display: "flex", justifyContent: "flex-end" }}>
     <Select
