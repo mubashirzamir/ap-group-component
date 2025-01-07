@@ -3,6 +3,7 @@ import { Table } from "antd";
 import { useEffect, useState } from "react";
 import request from "@/request.js";
 import { genericNetworkError } from "@/helpers/utils.jsx";
+import ProviderInfo from "@/pages/Dashboard/Cities/Darlington/View/ProviderInfo.jsx";
 
 const columns = [
   {
@@ -38,7 +39,10 @@ const View = () => {
   useEffect(() => {
     fetchPosts();
   }, []);
-
+  const [providerTime, setProviderTime] = useState("LAST_30_DAYS");
+  const [cityTime, setcityTime] = useState("LAST_30_DAYS");
+  const [providerData, providerLoading, providerErrored] = ProviderInfo();
+  console.log('providerData', providerData);
   return (
     <DashboardPage breadcrumbs={[{ title: "Darlington" }, { title: "View" }]}>
       <Table
