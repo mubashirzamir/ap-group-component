@@ -29,7 +29,9 @@
       <change beforePath="$PROJECT_DIR$/data/smartCity/WiredTiger.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/smartCity/WiredTiger.turtle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/smartCity/mongod.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/controller/ElectricalProviderInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/controller/ElectricalProviderInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/controller/SmartMeterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/controller/SmartMeterController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/service/ElectricalProviderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/service/ElectricalProviderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/service/SmartMeterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/service/SmartMeterService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
