@@ -1,0 +1,11 @@
+com\example\SmartCity\repository\SmartCityRepository.class
+com\example\SmartCity\dto\ConsumptionByProviderSummary.class
+com\example\SmartCity\dto\ElectricalProviderModel.class
+com\example\SmartCity\service\SmartCityService.class
+com\example\SmartCity\SmartCityApplication.class
+com\example\SmartCity\dto\MonthlyAverageByProviderSummary.class
+com\example\SmartCity\dto\MonthlyAverageForCitySummary.class
+com\example\SmartCity\client\ElectricalProviderClient.class
+com\example\SmartCity\model\ElectricalProviderConsumptionSummary.class
+com\example\SmartCity\controller\SmartCityController.class
+com\example\SmartCity\dto\ConsumptionForCitySummary.class
