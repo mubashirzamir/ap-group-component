@@ -11,45 +11,7 @@
       <change afterPath="$PROJECT_DIR$/electricalProvider/Dockerfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/data/smartCity/.mongodb/mongosh/67451e94dd78d74583fe6910_log" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/data/smartCity/.mongodb/mongosh/67451e94dd78d74583fe6910_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/data/smartCity/.mongodb/mongosh/67451e94f960cbfd4ffe6910_log" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/data/smartCity/.mongodb/mongosh/67451e94f960cbfd4ffe6910_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/data/smartCity/WiredTiger" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/data/smartCity/WiredTiger" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/data/smartCity/WiredTiger.lock" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/data/smartCity/WiredTiger.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/data/smartCity/WiredTiger.turtle" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/data/smartCity/WiredTiger.turtle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/src/main/java/com/example/SmartCity/SmartCityApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/src/main/java/com/example/SmartCity/SmartCityApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/src/main/java/com/example/SmartCity/client/ElectricalProviderClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/src/main/java/com/example/SmartCity/client/ElectricalProviderClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/src/test/java/com/example/SmartCity/SmartCityApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/src/test/java/com/example/SmartCity/SmartCityApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/src/test/java/com/example/SmartCity/TestSmartCityApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/src/test/java/com/example/SmartCity/TestSmartCityApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SmartCity/src/test/java/com/example/SmartCity/TestcontainersConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/SmartCity/src/test/java/com/example/SmartCity/TestcontainersConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/example/apiGateway/ApiGatewayApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/example/apiGateway/ApiGatewayApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/apiGateway/src/main/java/com/example/apiGateway/routes/Routes.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/java/com/example/apiGateway/routes/Routes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiGateway/src/test/java/com/example/apiGateway/ApiGatewayApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/apiGateway/src/test/java/com/example/apiGateway/ApiGatewayApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/data/citizen/.mongodb/mongosh/67451e9f6c58652bd8fe6910_log" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/data/citizen/.mongodb/mongosh/67451e9f6c58652bd8fe6910_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/data/citizen/.mongodb/mongosh/67451ea09e87be15a4fe6910_log" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/data/citizen/.mongodb/mongosh/67451ea09e87be15a4fe6910_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/data/citizen/WiredTiger" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/data/citizen/WiredTiger" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/data/citizen/WiredTiger.lock" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/data/citizen/WiredTiger.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/data/citizen/WiredTiger.turtle" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/data/citizen/WiredTiger.turtle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/data/citizen/mongod.lock" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/data/citizen/mongod.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/src/main/java/com/example/citizen/CitizenApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/src/main/java/com/example/citizen/CitizenApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/citizen/src/test/java/com/example/citizen/CitizenApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/citizen/src/test/java/com/example/citizen/CitizenApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/citizen/.mongodb/mongosh/677694e71e4dc33f9afe6910_log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/citizen/.mongodb/mongosh/677694e990d5f8ec1cfe6910_log" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/citizen/WiredTiger" beforeDir="false" />
@@ -68,58 +30,34 @@
       <change beforePath="$PROJECT_DIR$/data/smartCity/WiredTiger.lock" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/smartCity/WiredTiger.turtle" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/smartCity/mongod.lock" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/.gitattributes" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/.gitattributes" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/.mvn/wrapper/maven-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/data/citizen/.mongodb/mongosh/674ce3bc2e17f8fa13fe6910_log" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/data/citizen/.mongodb/mongosh/674ce3bc2e17f8fa13fe6910_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/data/citizen/.mongodb/mongosh/674ce3bcb917bce614fe6910_log" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/data/citizen/.mongodb/mongosh/674ce3bcb917bce614fe6910_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/data/citizen/WiredTiger" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/data/citizen/WiredTiger" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/data/citizen/WiredTiger.lock" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/data/citizen/WiredTiger.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/data/citizen/WiredTiger.turtle" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/data/citizen/WiredTiger.turtle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/data/electricalProvider/.mongodb/mongosh/6745def1e41fa2f3f5fe6910_log" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/data/electricalProvider/.mongodb/mongosh/6745def1e41fa2f3f5fe6910_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/data/electricalProvider/.mongodb/mongosh/6745def24c0ed1c565fe6910_log" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/data/electricalProvider/.mongodb/mongosh/6745def24c0ed1c565fe6910_log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/data/electricalProvider/WiredTiger" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/data/electricalProvider/WiredTiger" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/data/electricalProvider/WiredTiger.lock" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/data/electricalProvider/WiredTiger.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/data/electricalProvider/WiredTiger.turtle" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/data/electricalProvider/WiredTiger.turtle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/data/electricalProvider/mongod.lock" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/data/electricalProvider/mongod.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/mvnw.cmd" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/mvnw.cmd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/ElectricalProviderApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/ElectricalProviderApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/controller/ElectricalProviderInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/controller/ElectricalProviderInfoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/controller/SmartMeterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/controller/SmartMeterController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/service/ElectricalProviderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/service/ElectricalProviderService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/service/SmartMeterService.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/java/com/example/electricalprovider/service/SmartMeterService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/src/test/java/com/example/electricalprovider/ElectricalProviderApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/test/java/com/example/electricalprovider/ElectricalProviderApplicationTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/src/test/java/com/example/electricalprovider/TestElectricalProviderApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/test/java/com/example/electricalprovider/TestElectricalProviderApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/electricalProvider/src/test/java/com/example/electricalprovider/TestcontainersConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/electricalProvider/src/test/java/com/example/electricalprovider/TestcontainersConfiguration.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-<<<<<<< Updated upstream
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
-=======
   <component name="CodeStyleSettingsInfer">
     <option name="done" value="true" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;MikuGmer&quot;
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "MikuGmer"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/MikuGmer/backend.git&quot;,
-    &quot;accountId&quot;: &quot;00dbc7f4-12a2-4531-a5d1-aac68144ba2f&quot;
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/MikuGmer/backend.git",
+    "accountId": "00dbc7f4-12a2-4531-a5d1-aac68144ba2f"
   }
-}</component>
+}]]></component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
@@ -138,27 +76,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;JUnit.ApiGatewayApplicationTests.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.apiGateway [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.apiGateway [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.citizen [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.electricalProvider [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.smartCity [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/asus/OneDrive - Northumbria University - Production Azure AD/Advanced-programming/Project7_2/zamir/ap-group-component/backend/darlington/individual-assessment/SmartCity&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ApiGatewayApplication.executor": "Run",
+    "JUnit.ApiGatewayApplicationTests.executor": "Run",
+    "Maven.apiGateway [clean,install].executor": "Run",
+    "Maven.apiGateway [clean].executor": "Run",
+    "Maven.citizen [clean,install].executor": "Run",
+    "Maven.electricalProvider [clean,install].executor": "Run",
+    "Maven.smartCity [clean,install].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/asus/OneDrive - Northumbria University - Production Azure AD/Advanced-programming/Project7_2/zamir/ap-group-component/backend/darlington/individual-assessment/SmartCity",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\asus\OneDrive - Northumbria University - Production Azure AD\Advanced-programming\Project7_2\zamir\ap-group-component\backend\darlington\individual-assessment\SmartCity" />
@@ -210,8 +148,14 @@
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
->>>>>>> Stashed changes
   <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="da413fa1-dd4f-4764-9e34-fcff36cf14bc" name="Changes" comment="" />
+      <created>1734465325406</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1734465325406</updated>
+    </task>
     <servers />
   </component>
 </project>
