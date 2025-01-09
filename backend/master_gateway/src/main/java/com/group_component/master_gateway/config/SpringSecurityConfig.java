@@ -71,7 +71,7 @@ public class SpringSecurityConfig {
 
         return source;
     }
-// TEMPORARY DISABLE THE CHAIN
+
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
