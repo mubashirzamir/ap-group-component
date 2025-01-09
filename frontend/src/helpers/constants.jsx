@@ -10,6 +10,8 @@ export const REFRESH_INTERVAl_NEWCASTLE = 30000; // 30000ms = 30 seconds
 
 export const REFRESH_INTERVAL_SUNDERLAND = 30000; // 30000ms = 30 seconds
 
+export const REFRESH_INTERVAL_DARLINGTON = 30000; // 30000ms = 30 seconds
+
 // Define a color palette for providers
 export const COLORS = [
     "#3366CC",

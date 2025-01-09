@@ -24,3 +24,10 @@ spring:
             filters:
               - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
               - stripPrefix=2
+          - id: backend-darlington
+            uri: ${gateway.uris.darlington-service}
+            predicates:
+              - Path=/city/darlington/**
+            filters:
+              - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+              - stripPrefix=2
