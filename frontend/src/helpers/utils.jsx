@@ -14,6 +14,18 @@ export const validationError = (error, form) => {
         errors: [value],
       })),
     );
+
+    // Reset errors for fields without validation issues
+    const allFields = form.getFieldsValue(); // Get all fields from the form
+    const errorFields = new Set(Object.keys(errors)); // Get fields with errors
+    const fieldsToReset = Object.keys(allFields).filter((field) => !errorFields.has(field));
+
+    form.setFields(
+        fieldsToReset.map((field) => ({
+          name: field,
+          errors: [], // Clear errors for fields without validation issues
+        })),
+    );
   } else {
     throw error;
   }

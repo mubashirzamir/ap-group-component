@@ -1,0 +1,6 @@
+com\example\electricalprovider\TestElectricalProviderApplication.class
+com\example\electricalprovider\ElectricalProviderApplicationTests.class
+com\example\electricalprovider\TestcontainersConfiguration.class
+com\example\electricalprovider\controller\UserControllerTest.class
+com\example\electricalprovider\controller\SmartMeterControllerTest.class
+com\example\electricalprovider\controller\ElectricalProviderInfoControllerTest.class

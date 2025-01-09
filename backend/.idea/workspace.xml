@@ -93,88 +93,48 @@
       <change beforePath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/src/test/java/com/example/electricalprovider/ElectricalProviderApplicationTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/src/test/java/com/example/electricalprovider/ElectricalProviderApplicationTests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/src/test/java/com/example/electricalprovider/TestElectricalProviderApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/src/test/java/com/example/electricalprovider/TestElectricalProviderApplication.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/src/test/java/com/example/electricalprovider/TestcontainersConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/darlington/individual-assessment/electricalProvider/src/test/java/com/example/electricalprovider/TestcontainersConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master_gateway/src/main/resources/application-dev.yml" beforeDir="false" afterPath="$PROJECT_DIR$/master_gateway/src/main/resources/application-dev.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/master_gateway/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/master_gateway/src/main/resources/application.yml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="CodeStyleSettingsInfer">
-    <option name="done" value="true" />
-  </component>
-  <component name="FileTemplateManagerImpl">
-    <option name="RECENT_TEMPLATES">
-      <list>
-        <option value="Class" />
-      </list>
-    </option>
-  </component>
-  <component name="Git.Settings">
-    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;MikuGmer&quot;
-  }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/MikuGmer/backend.git&quot;,
-    &quot;accountId&quot;: &quot;00dbc7f4-12a2-4531-a5d1-aac68144ba2f&quot;
-  }
-}</component>
-  <component name="MarkdownSettingsMigration">
-    <option name="stateVersion" value="1" />
-  </component>
-  <component name="MavenImportPreferences">
-    <option name="generalSettings">
-      <MavenGeneralSettings>
-        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
-      </MavenGeneralSettings>
-    </option>
-  </component>
-  <component name="ProjectCodeStyleSettingsMigration">
-    <option name="version" value="2" />
-  </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 8
-}</component>
-  <component name="ProjectId" id="2qLRAKeJTHrBi4SULnAl4ghii2u" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+<<<<<<< Updated upstream
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+=======
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.ApiGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.CityApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MasterGatewayApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Application.SmartCityApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Maven. [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.apiGateway [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.citizen [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.city [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.electricalProvider [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.gateway [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.master_gateway [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.provider [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.smartCity [clean,install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/asus/OneDrive - Northumbria University - Production Azure AD/Advanced-programming/Project7_2/zamir/ap-group-component/backend&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.ApiGatewayApplication.executor": "Run",
+    "Application.CityApplication.executor": "Run",
+    "Application.MasterGatewayApplication.executor": "Run",
+    "Application.SmartCityApplication.executor": "Run",
+    "Maven. [clean,install].executor": "Run",
+    "Maven.apiGateway [clean,install].executor": "Run",
+    "Maven.citizen [clean,install].executor": "Run",
+    "Maven.city [clean,install].executor": "Run",
+    "Maven.electricalProvider [clean,install].executor": "Run",
+    "Maven.gateway [clean,install].executor": "Run",
+    "Maven.master_gateway [clean,install].executor": "Run",
+    "Maven.provider [clean,install].executor": "Run",
+    "Maven.smartCity [clean,install].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/asus/Desktop/Github_info/Proper_Copy/individual-assessment",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\asus\OneDrive - Northumbria University - Production Azure AD\Advanced-programming\Project7_2\zamir\ap-group-component\backend\darlington\individual-assessment\apiGateway\src\main\java\com\example\apiGateway" />
@@ -186,10 +146,8 @@
       <command value="mvn clean install" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.MasterGatewayApplication">
+  <component name="RunManager" selected="Application.ApiGatewayApplication">
     <configuration name="ApiGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="ALTERNATIVE_JRE_PATH" value="openjdk-19" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="com.example.apiGateway.ApiGatewayApplication" />
       <extension name="coverage">
         <pattern>
@@ -197,136 +155,17 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+>>>>>>> Stashed changes
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="CityApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.smart_cities.city.CityApplication" />
-      <module name="city" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.smart_cities.city.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <option name="filePath" />
+      <method v="2" />
     </configuration>
-    <configuration name="MasterGatewayApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.group_component.master_gateway.MasterGatewayApplication" />
-      <module name="master_gateway" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.group_component.master_gateway.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SmartCityApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.SmartCity.SmartCityApplication" />
-      <module name="smartCity" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.SmartCity.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.MasterGatewayApplication" />
-        <item itemvalue="Application.ApiGatewayApplication" />
-        <item itemvalue="Application.SmartCityApplication" />
-        <item itemvalue="Application.CityApplication" />
-      </list>
-    </recent_temporary>
   </component>
-  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
-    <task active="true" id="Default" summary="Default task">
-      <changelist id="7092312c-633e-4ec1-9577-714faf04f747" name="Changes" comment="" />
-      <created>1734439723570</created>
-      <option name="number" value="Default" />
-      <option name="presentableId" value="Default" />
-      <updated>1734439723570</updated>
-    </task>
-    <task id="LOCAL-00001" summary="hi">
-      <option name="closed" value="true" />
-      <created>1736255399077</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1736255399077</updated>
-    </task>
-    <task id="LOCAL-00002" summary="hi">
-      <option name="closed" value="true" />
-      <created>1736255560110</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1736255560110</updated>
-    </task>
-    <option name="localTasksCounter" value="3" />
     <servers />
-  </component>
-  <component name="UnknownFeatures">
-    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-core" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework.security:spring-security-core" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.persistence:jakarta.persistence-api" />
-    <option featureType="dependencySupport" implementationName="java:jakarta.validation:jakarta.validation-api" />
-    <option featureType="dependencySupport" implementationName="java:io.projectreactor:reactor-core" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework.data:spring-data-commons" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework.cloud:spring-cloud-context" />
-    <option featureType="dependencySupport" implementationName="java:org.hibernate.validator:hibernate-validator" />
-    <option featureType="dependencySupport" implementationName="java:javax.enterprise:cdi-api" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework.boot:spring-boot" />
-    <option featureType="dependencySupport" implementationName="java:org.springframework:spring-webmvc" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="OPEN_GENERIC_TABS">
-      <map>
-        <entry key="1a25e265-09a4-4e21-a3cc-79f9ca91ab45" value="TOOL_WINDOW" />
-      </map>
-    </option>
-    <option name="TAB_STATES">
-      <map>
-        <entry key="1a25e265-09a4-4e21-a3cc-79f9ca91ab45">
-          <value>
-            <State>
-              <option name="SHOW_ONLY_AFFECTED_CHANGES" value="true" />
-            </State>
-          </value>
-        </entry>
-        <entry key="MAIN">
-          <value>
-            <State>
-              <option name="FILTERS">
-                <map>
-                  <entry key="branch">
-                    <value>
-                      <list>
-                        <option value="HEAD" />
-                      </list>
-                    </value>
-                  </entry>
-                </map>
-              </option>
-            </State>
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="hi" />
-    <option name="LAST_COMMIT_MESSAGE" value="hi" />
   </component>
 </project>

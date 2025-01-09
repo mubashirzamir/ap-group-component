@@ -1,0 +1,4 @@
+com\example\SmartCity\TestcontainersConfiguration.class
+com\example\SmartCity\SmartCityApplicationTests.class
+com\example\SmartCity\controller\SmartCityControllerTest.class
+com\example\SmartCity\TestSmartCityApplication.class

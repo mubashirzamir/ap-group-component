@@ -6,27 +6,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="apiGateway" />
-        <module name="master_gateway" />
-        <module name="citizen" />
-        <module name="smartCity" />
         <module name="electricalProvider" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="citizen (1) (com.example)" target="17" />
-      <module name="city" target="17" />
-      <module name="gateway" target="17" />
-      <module name="provider" target="17" />
+      <module name="apiGateway" target="17" />
+      <module name="citizen" target="17" />
+      <module name="master_gateway" target="17" />
+      <module name="smartCity" target="17" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="apiGateway" options="-parameters" />
-      <module name="citizen" options="-parameters" />
       <module name="electricalProvider" options="-parameters" />
-      <module name="master_gateway" options="-parameters" />
-      <module name="smartCity" options="-parameters" />
     </option>
   </component>
 </project>
