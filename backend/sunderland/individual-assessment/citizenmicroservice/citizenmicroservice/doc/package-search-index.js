@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.kf7014.citizenmicroservice"},{"l":"com.kf7014.citizenmicroservice.config"},{"l":"com.kf7014.citizenmicroservice.model"},{"l":"com.kf7014.citizenmicroservice.service"}];updateSearchResults();
