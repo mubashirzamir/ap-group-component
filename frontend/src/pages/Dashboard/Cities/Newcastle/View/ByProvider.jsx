@@ -18,12 +18,12 @@ const columns = [
     key: "providerId",
   },
   {
-    title: "Total Consumption (Wh)",
+    title: "Total Consumption (kWh)",
     dataIndex: "totalConsumption",
     key: "totalConsumption",
   },
   {
-    title: "Average Consumption (Wh)",
+    title: "Average Consumption (kWh)",
     dataIndex: "averageConsumption",
     key: "averageConsumption",
   },

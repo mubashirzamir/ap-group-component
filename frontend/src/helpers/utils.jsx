@@ -1,4 +1,5 @@
 import { notification } from "antd";
+import React from 'react'
 
 const notificationProps = {
   placement: "bottomRight",
@@ -107,3 +108,8 @@ export const randomColor = () => {
 export const toDecimalPlaces = (value, places = 2) => {
   return Number(value).toFixed(places);
 };
+
+export const CityHeading = ({ name }) => {
+  return <h1 className="font-extrabold text-2xl mt-8 mb-4">{name}</h1>;
+};
+
