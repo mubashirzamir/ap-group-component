@@ -1,0 +1,188 @@
+version: '3.8'
+
+services:
+  # MongoDB for Provider A
+  mongodb-a:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongodb-a
+    restart: always  
+    environment:
+      - MONGO_INITDB_DATABASE=provider_a_db
+    volumes:
+      - db-a:/data/db
+    networks:
+      - smart-city-network
+
+  # MongoDB for Provider B
+  mongodb-b:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongodb-b
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=provider_b_db
+    volumes:
+      - db-b:/data/db
+    networks:
+      - smart-city-network
+
+  # MongoDB for Provider C
+  mongodb-c:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongodb-c
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=provider_c_db
+    volumes:
+      - db-c:/data/db
+    networks:
+      - smart-city-network
+
+  mongodb-smartcity:
+    image: mongodb/mongodb-community-server:latest
+    container_name: mongodb-smartcity
+    restart: always
+    environment:
+      - MONGO_INITDB_DATABASE=smart_city_db
+    volumes:
+      - db-smartcity:/data/db
+    networks:
+      - smart-city-network
+
+  # Provider A Service
+  provider-a:
+    build: electricityprovidermicroservice/.
+    container_name: provider-a
+    restart: always
+    environment:
+      - MONGODB_HOST=mongodb-a
+      - MONGODB_PORT=27017
+      - MONGODB_DATABASE=provider_a_db
+      - WAIT_HOSTS=mongodb-a:27017
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_HOST_CONNECT_TIMEOUT=30
+    depends_on:
+      - mongodb-a
+    command: sh -c "/wait && java -Xmx2048M -jar application.jar"
+    networks:
+      - smart-city-network
+    ports:
+      - "8081:8080"
+
+  # Provider B Service
+  provider-b:
+    build: electricityprovidermicroservice/.
+    container_name: provider-b
+    restart: always
+    environment:
+      - MONGODB_HOST=mongodb-b
+      - MONGODB_PORT=27017
+      - MONGODB_DATABASE=provider_b_db
+      - WAIT_HOSTS=mongodb-b:27017
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_HOST_CONNECT_TIMEOUT=30
+    depends_on:
+      - mongodb-b
+    command: sh -c "/wait && java -Xmx2048M -jar application.jar"
+    networks:
+      - smart-city-network
+    ports:
+      - "8082:8080"
+
+  # Provider C Service
+  provider-c:
+    build: electricityprovidermicroservice/.
+    container_name: provider-c
+    restart: always
+    environment:
+      - MONGODB_HOST=mongodb-c
+      - MONGODB_PORT=27017
+      - MONGODB_DATABASE=provider_c_db
+      - WAIT_HOSTS=mongodb-c:27017
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=30
+      - WAIT_HOST_CONNECT_TIMEOUT=30
+    depends_on:
+      - mongodb-c
+    command: sh -c "/wait && java -Xmx2048M -jar application.jar"
+    networks:
+      - smart-city-network
+    ports:
+      - "8083:8080"
+
+# Citizen Service for Provider A
+  citizen-service-a:
+    build: citizenmicroservice/citizenmicroservice/.
+    container_name: citizen-service-a
+    restart: always
+    environment:
+      - PROVIDER_URL=http://provider-a:8080/api/readings
+    depends_on:
+      - provider-a
+    networks:
+      - smart-city-network
+    command: sh -c "/wait-for-it.sh provider-a:8080 --timeout=90 --strict && java -Xmx2048M -jar application.jar"
+
+  # Citizen Service for Provider B
+  citizen-service-b:
+    build: citizenmicroservice/citizenmicroservice/.
+    container_name: citizen-service-b
+    restart: always
+    environment:
+      - PROVIDER_URL=http://provider-b:8080/api/readings
+    depends_on:
+      - provider-b
+    networks:
+      - smart-city-network
+    command: sh -c "/wait-for-it.sh provider-b:8080 --timeout=90 --strict && java -Xmx2048M -jar application.jar"
+
+  # Citizen Service for Provider C
+  citizen-service-c:
+    build: citizenmicroservice/citizenmicroservice/.
+    container_name: citizen-service-c
+    restart: always
+    environment:
+      - PROVIDER_URL=http://provider-c:8080/api/readings
+    depends_on:
+      - provider-c
+    networks:
+      - smart-city-network
+    command: sh -c "/wait-for-it.sh provider-c:8080 --timeout=90 --strict && java -Xmx2048M -jar application.jar"
+
+  smart-city-microservice:
+      build: smartcitymicroservice/.
+      container_name: smart-city-microservice
+      restart: always
+      environment:
+        - SERVER_PORT=8080
+        - MONGODB_HOST=mongodb-smartcity
+        - MONGODB_PORT=27017
+        - MONGODB_DATABASE=smart_city_db
+        - PROVIDER_A_URL=http://provider-a:8080
+        - PROVIDER_B_URL=http://provider-b:8080
+        - PROVIDER_C_URL=http://provider-c:8080
+        - WAIT_HOSTS=mongodb-smartcity:27017, provider-a:8080, provider-b:8080, provider-c:8080
+        - WAIT_HOSTS_TIMEOUT=300
+        - WAIT_SLEEP_INTERVAL=30
+        - WAIT_HOST_CONNECT_TIMEOUT=30
+      depends_on:
+        - mongodb-smartcity
+        - provider-a
+        - provider-b
+        - provider-c
+      ports:
+      - "9000:8080"
+      command: sh -c "/wait && java -Xmx2048M -jar application.jar"
+      networks:
+        - smart-city-network
+
+networks:
+  smart-city-network:
+    driver: bridge
+
+volumes:
+  db-a:
+  db-b:
+  db-c:
+  db-smartcity:
