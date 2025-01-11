@@ -25,6 +25,14 @@ request.interceptors.request.use(
 
 request.interceptors.response.use(
   (response) => {
+    /**
+     * Unfortunately, the Newcastle API does not return a proper error code when the service is unavailable.
+     * Hence, we need to check the response data.
+     */
+    if (response.data === "Service is currently unavailable") {
+      throw new Error("Service is currently unavailable");
+    }
+
     return response.data;
   },
   (error) => {

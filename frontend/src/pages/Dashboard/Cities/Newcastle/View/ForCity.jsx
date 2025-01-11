@@ -56,13 +56,13 @@ const ForCity = () => {
           <Card>
             <Meta
               title={toDecimalPlaces(data?.totalConsumption, 0)}
-              description="Total Consumption (Wh)"
+              description="Total Consumption (kWh)"
             />
           </Card>
           <Card>
             <Meta
               title={toDecimalPlaces(data?.averageConsumption, 0)}
-              description="Average Consumption (Wh)"
+              description="Average Consumption (kWh)"
             />
           </Card>
         </div>
