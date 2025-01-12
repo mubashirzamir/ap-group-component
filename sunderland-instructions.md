@@ -7,18 +7,16 @@
 
 ### Port Availability
 - Ensure the following ports are available:
-  - **8081**
-  - **8082**
-  - **8083**
-  - **8443**
+  - **9081**
+  - **9082**
+  - **9083**
 
 ## Deployment Steps
 
 ### Step 1: Unzip Files
-- Unzip the provided ZIP files into a folder of your choice.
-- The main folder will contain the following:
+- Clone the repo.
+- Go into the Sunderland backend folder containing the following:
   - `docker-compose.yml`
-  - `nginx.conf`
   - Directories for each microservice containing their respective `Dockerfile`.
 
 ### Step 2: Build and Run Containers
