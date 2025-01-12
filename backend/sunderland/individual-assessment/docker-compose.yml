@@ -67,7 +67,7 @@ services:
     networks:
       - smart-city-network
     ports:
-      - "8081:8080"
+      - "9081:8080"
 
   # Provider B Service
   provider-b:
@@ -88,7 +88,7 @@ services:
     networks:
       - smart-city-network
     ports:
-      - "8082:8080"
+      - "9082:8080"
 
   # Provider C Service
   provider-c:
@@ -109,7 +109,7 @@ services:
     networks:
       - smart-city-network
     ports:
-      - "8083:8080"
+      - "9083:8080"
 
 # Citizen Service for Provider A
   citizen-service-a:
@@ -172,7 +172,7 @@ services:
         - provider-b
         - provider-c
       ports:
-      - "9000:8080"
+      - "9083:8080"
       command: sh -c "/wait && java -Xmx2048M -jar application.jar"
       networks:
         - smart-city-network
