@@ -21,3 +21,10 @@
    - http://localhost:8087/api/smartCity/electricalProvider/507f1f77bcf86cd799439011/allSummary
    - http://localhost:8087/api/smartCity/electricalProvider/507f1f77bcf86cd799439012/allSummary
 3. If all is working as intended, you should see the results appearing at the front-end.
+
+
+## Importance:
+1. For the front-end to show expected result, these microservices must be up and running:
+   1. Api gateway
+   2. Electrical provider
+   3. Smart City
