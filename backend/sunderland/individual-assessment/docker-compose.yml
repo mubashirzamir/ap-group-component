@@ -172,7 +172,7 @@ services:
         - provider-b
         - provider-c
       ports:
-      - "9083:8080"
+      - "9084:8080"
       command: sh -c "/wait && java -Xmx2048M -jar application.jar"
       networks:
         - smart-city-network
