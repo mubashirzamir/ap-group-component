@@ -39,5 +39,10 @@
 
 Find all the `<city-name>-instructions.md` files in the root of the project for instructions on how to run individual
 assessments.
+
+If they are not present, the instructions should be in their respective individual assessment directories.
+
+NOTE: You may need to run each individual component one by one instead of running them all at once because of potential
+port conflicts and resource constraints.
    
 
