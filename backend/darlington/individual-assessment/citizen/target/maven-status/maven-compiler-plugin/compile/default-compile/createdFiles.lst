@@ -1,0 +1,8 @@
+com\example\citizen\CitizenApplication.class
+com\example\citizen\controller\SmartMeterController.class
+com\example\citizen\dto\SmartMeterData.class
+com\example\citizen\publisher\SmartMeterPublisher.class
+com\example\citizen\service\SmartMeterService.class
+com\example\citizen\config\RabbitMQConfig.class
+com\example\citizen\repository\SmartMeterRepository.class
+com\example\citizen\model\smartMeterModel.class
